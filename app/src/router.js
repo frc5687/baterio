@@ -22,7 +22,9 @@ export default new VueRouter({
      */
 
     routes: [
-        { path: '/', component: load('Hello') },
-        { path: '*', component: load('Error404') }
+        { path: '/agordojn', component: load('Agordojn') },
+        { path: '/hejmo', component: load('Hello') },
+        { path: '/', redirect: '/hejmo' },
+        { path: '/*', component: load('Error404') }
     ]
 })

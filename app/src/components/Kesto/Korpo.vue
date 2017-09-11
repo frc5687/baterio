@@ -6,7 +6,7 @@
                 <q-item-side icon="home" />
                 <q-item-main :label="$t('kesto.korpo.hejmo')"/>
             </q-side-link>
-            <q-side-link item to="/">
+            <q-side-link item to="/agordojn">
                 <q-item-side icon="settings" />
                 <q-item-main :label="$t('kesto.korpo.agordojn')"/>
             </q-side-link>

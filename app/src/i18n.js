@@ -14,6 +14,10 @@ export const messages = {
         },
         mesagxoj: {
             saluton: 'Saluton'
+        },
+        agordojn: {
+            lingvo: 'Lingvo',
+            elektuVianPreferatanLingvonPorMontriPagxojn: 'Elektu vian preferatan lingvon por montri paĝojn'
         }
     },
     en: {
@@ -26,6 +30,10 @@ export const messages = {
         },
         mesagxoj: {
             saluton: 'Hello'
+        },
+        agordojn: {
+            lingvo: 'Language',
+            elektuVianPreferatanLingvonPorMontriPagxojn: 'Choose your preferred language to display pages'
         }
     }
 }

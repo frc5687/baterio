@@ -20,14 +20,18 @@ Vue.use(Quasar) // Install Quasar Framework
 Vue.use(VueI18n)
 
 import { messages } from './i18n'
+import { store } from './store'
 
-const i18n = new VueI18n({
-    locale: 'eo',
-    fallbackLocale: 'en',
+export const i18n = new VueI18n({
+    locale: store.state.lingvo,
     messages
 })
 
-Vue.config.lang = 'en'
+store.subscribe((mutation, state) => {
+    if (mutation.type === 'agordiLingvon') {
+        i18n.locale = state.lingvo
+    }
+})
 
 if (__THEME === 'mat') {
     require('quasar-extras/roboto-font')
