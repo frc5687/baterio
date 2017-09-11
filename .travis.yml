@@ -1,0 +1,32 @@
+dist: trusty
+sudo: required
+os: linux
+language: python
+python:
+  - "3.6"
+before_install:
+  - pwd
+  - ls
+  # instali node
+  # install node
+  - sudo apt-get update
+  - sudo apt-get -y install nodejs npm nodejs-legacy
+  # instali Quasar
+  # install Quasar
+  - sudo npm install -g quasar-cli
+  # ensaluti la versiojn
+  # logging versions
+  - node -v
+  - npm -v
+  - python3.6 -m pip -V
+  - python3.6 -V
+  - quasar version
+install:
+  - pwd
+  - cd ~/build/frc5687/baterio/app/; npm install
+script:
+  # Lint la app
+  # Lint the app
+  - cd ~/build/frc5687/baterio/app/
+  - quasar lint
+
