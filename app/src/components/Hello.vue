@@ -11,7 +11,7 @@
         </q-toolbar>
 
         <div class="layout-padding">
-            <p>Hello</p>
+            <p>{{ $t('messages.hello') }}</p>
         </div>
     </q-layout>
 </template>
