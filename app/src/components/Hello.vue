@@ -10,13 +10,17 @@
             </q-toolbar-title>
         </q-toolbar>
 
+        <korpo slot="left"/>
+
         <div class="layout-padding">
-            <p>{{ $t('messages.hello') }}</p>
+            <p>{{ $t('mesagxoj.saluton') }}</p>
         </div>
     </q-layout>
 </template>
 
 <script>
+    import Korpo from './Kesto/Korpo.vue'
+
     import {
         QLayout,
         QToolbar,
@@ -29,6 +33,7 @@
 
     export default {
         components: {
+            Korpo,
             QLayout,
             QToolbar,
             QToolbarTitle,

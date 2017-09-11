@@ -1,12 +1,31 @@
+/*
+Vue i18n havas problemojn kun unikodaj klavoj.
+Pro tio ni uzas la x-notacion.
+ */
+
 export const messages = {
     eo: {
-        messages: {
-            hello: 'Saluton'
+        kesto: {
+            korpo: {
+                hejmo: 'Hejmo',
+                navigi: 'Navigi',
+                agordojn: 'Agordojn'
+            }
+        },
+        mesagxoj: {
+            saluton: 'Saluton'
         }
     },
     en: {
-        messages: {
-            hello: 'Hello'
+        kesto: {
+            korpo: {
+                hejmo: 'Home',
+                navigi: 'Navigate',
+                agordojn: 'Settings'
+            }
+        },
+        mesagxoj: {
+            saluton: 'Hello'
         }
     }
 }
