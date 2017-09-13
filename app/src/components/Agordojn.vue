@@ -85,7 +85,6 @@
         methods: {
             agordiLingvon () {
                 store.dispatch('agordiLingvon', this.elektitaLingvo)
-                // i18n.locale = this.elektitaLingvo
             }
         }
     }
