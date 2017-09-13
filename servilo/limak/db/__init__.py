@@ -41,6 +41,7 @@ class BaterioOkazaĵoV1(Bazo):
 	baterio_id = Column(String(36))
 	data = Column(JSON)
 
+
 motoro = create_engine(os.environ['datumbazoAdreso'])
 Bazo.metadata.create_all(motoro)
 Bazo.metadata.bind = motoro
