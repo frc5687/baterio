@@ -3,6 +3,9 @@
 ## Konstrui Instalinstrukciojn / Build Setup
 
 ``` bash
+# instali quasar
+$ sudo npm install -g quasar-cli
+
 # instali dependecojn
 # install dependencies
 $ npm install
