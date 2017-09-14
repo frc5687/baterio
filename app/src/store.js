@@ -5,13 +5,22 @@ import {LocalStorage} from 'quasar'
 Vue.use(Vuex)
 
 let blankState = {
-    lingvo: 'en'
+    lingvo: 'eo',
+    kunsido: {
+        kunsidoId: null,
+        validaĜis: null
+    }
 }
 
 let vuexState = Object.assign(blankState, (LocalStorage.get.item('vuexState') || {}))
 
 export const store = new Vuex.Store({
     state: vuexState,
+    getters: {
+        neEkspiritaKunsido: state => {
+            return state.kunsido.validaĜis !== null && new Date(state.kunsido.validaĜis) > new Date()
+        }
+    },
     mutations: {
         agordiLingvon (state, lingvo) {
             state.lingvo = lingvo

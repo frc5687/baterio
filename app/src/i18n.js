@@ -13,7 +13,8 @@ export const messages = {
             }
         },
         mesagxoj: {
-            saluton: 'Saluton'
+            saluton: 'Saluton',
+            bonvoluEnsaluti: 'Bonvolu Ensaluti'
         },
         agordojn: {
             lingvo: 'Lingvo',
@@ -29,7 +30,8 @@ export const messages = {
             }
         },
         mesagxoj: {
-            saluton: 'Hello'
+            saluton: 'Hello',
+            bonvoluEnsaluti: 'Please sign in'
         },
         agordojn: {
             lingvo: 'Language',

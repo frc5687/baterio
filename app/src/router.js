@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { store } from './store.js'
 
 Vue.use(VueRouter)
 
@@ -8,7 +9,7 @@ function load (component) {
     return () => import(`@/${component}.vue`)
 }
 
-export default new VueRouter({
+const router = new VueRouter({
     /*
      * NOTE! VueRouter "history" mode DOESN'T works for Cordova builds,
      * it is only to be used only for websites.
@@ -24,7 +25,19 @@ export default new VueRouter({
     routes: [
         { path: '/agordojn', component: load('Agordojn') },
         { path: '/hejmo', component: load('Hello') },
+        { path: '/ensaluti', component: load('Ensaluti') },
         { path: '/', redirect: '/hejmo' },
         { path: '/*', component: load('Error404') }
     ]
 })
+
+router.beforeEach((al, de, poste) => {
+    if (al.path.substring(0, 9) === '/ensaluti') {
+        poste()
+    }
+    else {
+        store.getters.neEkspiritaKunsido ? poste() : poste('/ensaluti')
+    }
+})
+
+export default router

@@ -13,9 +13,16 @@
         <korpo slot="left"/>
 
         <div class="layout-padding">
-            <q-list>
-                <lingvo-elektilo/>
-            </q-list>
+            <lingvo-elektilo/>
+            <div class="row items-center justify-center content-center" style="height: 60vh;">
+                <div>
+                    <p class="text-center">{{ $t('mesagxoj.bonvoluEnsaluti') }}</p>
+                    <br>
+                    <div class="row justify-around">
+                        <img src="~assets/btn_google_signin_light_normal_web.png" @click="signIn()"/>
+                    </div>
+                </div>
+            </div>
         </div>
     </q-layout>
 </template>
@@ -30,31 +37,22 @@
         QToolbar,
         QToolbarTitle,
         QBtn,
-        QIcon,
-        QList,
-        QListHeader,
-        QField,
-        QItem,
-        QItemMain,
-        QSelect
+        QIcon
     } from 'quasar'
 
     export default {
         store,
         components: {
-            Korpo,
             LingvoElektilo,
+            Korpo,
             QLayout,
             QToolbar,
             QToolbarTitle,
             QBtn,
-            QIcon,
-            QList,
-            QListHeader,
-            QField,
-            QItem,
-            QItemMain,
-            QSelect
+            QIcon
+        },
+        data () {
+            return {}
         }
     }
 </script>
