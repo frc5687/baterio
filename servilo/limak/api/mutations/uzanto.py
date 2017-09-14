@@ -14,7 +14,7 @@ class KreiKunsidon(graphene.Mutation):
 
 	@staticmethod
 	def mutate(root, args, context, info):
-		kreditoj = google.oauth2.credentials.Credentials(args.get('access_token'))
+		kreditoj = google.oauth2.credentials.Credentials(args.get('aliro_token'))
 		rajtigita_kunsido = AuthorizedSession(kreditoj)
 		respondo = rajtigita_kunsido.get('https://www.googleapis.com/userinfo/v2/me')
 		respondo = respondo.json()
@@ -32,8 +32,8 @@ class KreiKunsidon(graphene.Mutation):
 												respondo.get('hd', 'gmail.com')
 												)
 
-		valida_ĝis, kunsido_id = db_funkcioj.krei_kunsidon(uzanto_id)
+		valida_gxis, kunsidon_id = db_funkcioj.krei_kunsidon(uzanto_id)
 
-		kunsidon = Kunsidon(kunsido_id=kunsido_id, valida_ĝis=valida_ĝis)
+		kunsidon = Kunsidon(kunsidon_id=kunsidon_id, valida_gxis=valida_gxis)
 
-		return KreiKunsidon(kunsido=kunsidon)
+		return KreiKunsidon(kunsidon=kunsidon)

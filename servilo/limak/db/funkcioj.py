@@ -33,7 +33,7 @@ def akiri_uzanton_id(google_id: str) -> str:
 def krei_konton(retpoŝto: str,
 				google_id: str,
 				unua_nomo: str,
-				familiar_nomo: str,
+				familia_nomo: str,
 				plena_nomo: str,
 				bildo: str,
 				hd: str,
@@ -45,11 +45,11 @@ def krei_konton(retpoŝto: str,
 	db_kunsido = DBKunsido()
 	db_kunsido.add(UzantoV1(
 		uzanto_id=uzanto_id,
-		estos_administra=estos_administra,
+		estas_administranto=estos_administra,
 		retpoŝto=retpoŝto,
 		google_id=google_id,
 		unua_nomo=unua_nomo,
-		familiar_nomo=familiar_nomo,
+		familia_nomo=familia_nomo,
 		plena_nomo=plena_nomo,
 		bildo=bildo,
 		hd=hd
@@ -59,13 +59,13 @@ def krei_konton(retpoŝto: str,
 	return uzanto_id
 
 
-def krei_kunsidon(uzanton_id: str) -> Tuple[datetime.datetime, str]:
+def krei_kunsidon(uzanto_id: str) -> Tuple[datetime.datetime, str]:
 	kunsidon_id = str(uuid4())
 	valida_ĝis = datetime.datetime.utcnow() + datetime.timedelta(days=90)
 	db_kunsido = DBKunsido()
 	db_kunsido.add(KunsidoV1(
-		uzanton_id=uzanton_id,
 		kunsidon_id=kunsidon_id,
+		uzanto_id=uzanto_id,
 		valida_ĝis=valida_ĝis
 	))
 	db_kunsido.commit()

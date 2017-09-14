@@ -7,8 +7,8 @@ Vue.use(Vuex)
 let blankState = {
     lingvo: 'eo',
     kunsido: {
-        kunsidoId: null,
-        validaĜis: null
+        kunsidonId: null,
+        validaGxis: null
     }
 }
 
@@ -18,12 +18,16 @@ export const store = new Vuex.Store({
     state: vuexState,
     getters: {
         neEkspiritaKunsido: state => {
-            return state.kunsido.validaĜis !== null && new Date(state.kunsido.validaĜis) > new Date()
+            return state.kunsido.validaGxis !== null && new Date(state.kunsido.validaGxis) > new Date()
         }
     },
     mutations: {
         agordiLingvon (state, lingvo) {
             state.lingvo = lingvo
+        },
+        starigisNovanKunsidon (state, payload) {
+            state.kunsido.kunsidonId = payload.kunsidonId
+            state.kunsido.validaGxis = payload.validaGxis
         }
     },
     actions: {

@@ -14,10 +14,17 @@ import Vue from 'vue'
 import Quasar from 'quasar'
 import router from './router'
 import VueI18n from 'vue-i18n'
+import GoogleAuth from 'vue-google-oauth'
+import ApolloClient, { createNetworkInterface } from 'apollo-client'
 
 Vue.config.productionTip = false
 Vue.use(Quasar) // Install Quasar Framework
 Vue.use(VueI18n)
+Vue.use(GoogleAuth, {
+    client_id: '83770318022-77bpgvdogerhsu53j1154ihrevt1ovje.apps.googleusercontent.com',
+    scope: 'https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile'
+})
+Vue.googleAuth().load()
 
 import { messages } from './i18n'
 import { store } from './store'
@@ -40,6 +47,12 @@ import 'quasar-extras/material-icons'
 // import 'quasar-extras/ionicons'
 // import 'quasar-extras/fontawesome'
 // import 'quasar-extras/animate'
+
+export const client = new ApolloClient({
+    networkInterface: createNetworkInterface({
+        uri: 'http://localhost:8000/graphql'
+    })
+})
 
 Quasar.start(() => {
     /* eslint-disable no-new */

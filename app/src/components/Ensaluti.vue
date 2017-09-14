@@ -28,16 +28,21 @@
 </template>
 
 <script>
-    import { store } from '../store'
+    import Vue from 'vue'
+    import { store, skribuVuexStateAlLokaStokado } from '../store'
+    import { mapState, mapActions } from 'vuex'
     import Korpo from './Kesto/Korpo.vue'
     import LingvoElektilo from './LingvoElektilo.vue'
+    import { client } from '../main.js'
+    import gql from 'graphql-tag'
 
     import {
         QLayout,
         QToolbar,
         QToolbarTitle,
         QBtn,
-        QIcon
+        QIcon,
+        Toast
     } from 'quasar'
 
     export default {
@@ -50,6 +55,49 @@
             QToolbarTitle,
             QBtn,
             QIcon
+        },
+        computed: mapState({
+            session: state => state.session
+        }),
+        methods: {
+            ...mapActions([]),
+            signIn () {
+                Vue.googleAuth().directAccess()
+                Vue.googleAuth().signIn(this.onSignInSuccess, this.onSignInError)
+            },
+            onSignInSuccess (googleUser) {
+                console.log('Google User: %o', googleUser)
+                let aliroToken = googleUser.Zi.access_token
+                console.log('Aliro Token: %o', aliroToken)
+
+                let mem = this
+
+                client.mutate({
+                    mutation: gql`
+                        mutation ($aliroToken: ID!) {
+                            kreiKunsidon (aliroToken: $aliroToken) {
+                                kunsidon {
+                                    kunsidonId
+                                    validaGxis
+                                }
+                            }
+                        }
+                    `,
+                    variables: {
+                        aliroToken: aliroToken
+                    }
+                }).then(respondo => {
+                    console.log(respondo)
+                    mem.$store.commit('starigisNovanKunsidon', respondo.data.kreiKunsidon.kunsidon)
+                    skribuVuexStateAlLokaStokado()
+                })
+            },
+            onSignInError (error) {
+                console.log('Error while Signing In', error)
+                Toast.create.negative({
+                    html: this.$t('mesagxoj.eraroDumSubskribo')
+                })
+            }
         },
         data () {
             return {}
