@@ -15,7 +15,10 @@ export const messages = {
         mesagxoj: {
             saluton: 'Saluton',
             bonvoluEnsaluti: 'Bonvolu Ensaluti',
-            eraroDumSubskribo: 'Eraro dum subskribo'
+            eraroDumSubskribo: 'Eraro dum subskribo',
+            provoViaAuxdado: 'Provo via auxdado',
+            elsaluti: 'Elsaluti',
+            haltuTono: 'Haultu tono'
         },
         agordojn: {
             lingvo: 'Lingvo',
@@ -33,7 +36,10 @@ export const messages = {
         mesagxoj: {
             saluton: 'Hello',
             bonvoluEnsaluti: 'Please sign in',
-            eraroDumSubskribo: 'Error while signing in'
+            eraroDumSubskribo: 'Error while signing in',
+            provoViaAuxdado: 'Test your hearing',
+            elsaluti: 'Sign out',
+            haltuTono: 'Stop Tone'
         },
         agordojn: {
             lingvo: 'Language',

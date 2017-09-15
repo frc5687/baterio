@@ -34,6 +34,12 @@ export const store = new Vuex.Store({
         agordiLingvon ({ commit }, lingvo) {
             commit('agordiLingvon', lingvo)
             skribuVuexStateAlLokaStokado()
+        },
+        klaraKunsido ({ commit }) {
+            commit('starigisNovanKunsidon', {
+                kunsidonId: null,
+                validaGxis: null
+            })
         }
     }
 })

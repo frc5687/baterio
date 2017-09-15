@@ -90,6 +90,7 @@
                     console.log(respondo)
                     mem.$store.commit('starigisNovanKunsidon', respondo.data.kreiKunsidon.kunsidon)
                     skribuVuexStateAlLokaStokado()
+                    mem.$router.push('/')
                 })
             },
             onSignInError (error) {
