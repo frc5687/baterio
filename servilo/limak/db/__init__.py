@@ -23,7 +23,7 @@ class UzantoV1(Bazo):
 
 class KunsidoV1(Bazo):
 	__tablename__ = 'KunsidoV1'
-	kunsido_id = Column(String(36), primary_key=True)
+	kunsidon_id = Column(String(36), primary_key=True)
 	uzanto_id = Column(String(36))
 	valida_ĝis = Column(DATETIME)
 

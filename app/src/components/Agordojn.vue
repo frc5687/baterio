@@ -14,12 +14,28 @@
 
         <div class="layout-padding">
             <q-list>
+                <lingvo-elektilo/>
+                <q-item-separator/>
+                <q-list-header>{{ $t('mesagxoj.provoViaAuxdado') }}</q-list-header>
                 <q-item>
-                    <q-item-main>
-                        <q-field icon="language" :helper="$t('agordojn.elektuVianPreferatanLingvonPorMontriPagxojn')">
-                            <q-select v-model="elektitaLingvo" :options="lingvoj" @change="agordiLingvon()" :float-label="$t('agordojn.lingvo')"/>
-                        </q-field>
-                    </q-item-main>
+                    <div class="row justify-around" style="width: 100%">
+                        <q-btn @click="ĉagreniAliajn(40)">40hz</q-btn>
+                        <q-btn @click="ĉagreniAliajn(400)">400hz</q-btn>
+                        <q-btn @click="ĉagreniAliajn(15000)">15khz</q-btn>
+                        <q-btn @click="ĉagreniAliajn(17000)">17khz</q-btn>
+                        <q-btn @click="ĉagreniAliajn(19000)">19khz</q-btn>
+                    </div>
+                </q-item>
+                <q-item>
+                    <div class="row justify-around" style="width: 100%">
+                        <q-btn @click="haltuTono()" color="secondary">{{ $t('mesagxoj.haltuTono') }}</q-btn>
+                    </div>
+                </q-item>
+                <q-item-separator/>
+                <q-item>
+                    <div class="row justify-around" style="width: 100%">
+                        <q-btn @click="elsaluti()" color="negative">{{ $t('mesagxoj.elsaluti') }}</q-btn>
+                    </div>
                 </q-item>
             </q-list>
         </div>
@@ -28,8 +44,8 @@
 
 <script>
     import { store } from '../store'
-    import { mapState } from 'vuex'
     import Korpo from './Kesto/Korpo.vue'
+    import LingvoElektilo from './LingvoElektilo.vue'
 
     import {
         QLayout,
@@ -42,13 +58,15 @@
         QField,
         QItem,
         QItemMain,
-        QSelect
+        QSelect,
+        QItemSeparator
     } from 'quasar'
 
     export default {
         store,
         components: {
             Korpo,
+            LingvoElektilo,
             QLayout,
             QToolbar,
             QToolbarTitle,
@@ -59,32 +77,39 @@
             QField,
             QItem,
             QItemMain,
-            QSelect
+            QSelect,
+            QItemSeparator
         },
-        computed: mapState({
-            lingvo: state => state.lingvo
-        }),
         mounted () {
-            this.elektitaLingvo = this.lingvo
+            this.audioContext = new AudioContext()
+            this.osc = this.audioContext.createOscillator()
+            this.osc.frequency.value = 0
+            this.osc.connect(this.audioContext.destination)
         },
         data () {
             return {
-                elektitaLingvo: '',
-                lingvoj: [
-                    {
-                        label: 'English',
-                        value: 'en'
-                    },
-                    {
-                        label: 'Esperanto',
-                        value: 'eo'
-                    }
-                ]
+                audioContext: null,
+                osc: null,
+                ludas: false
             }
         },
         methods: {
-            agordiLingvon () {
-                store.dispatch('agordiLingvon', this.elektitaLingvo)
+            haltuTono () {
+                if (this.ludas) {
+                    this.osc.stop()
+                    this.ludas = false
+                }
+            },
+            ĉagreniAliajn (ofteco) {
+                this.osc.frequency.value = ofteco
+                if (!this.ludas) {
+                    this.osc.start()
+                }
+                this.ludas = true
+            },
+            elsaluti () {
+                this.$store.dispatch('klaraKunsido')
+                this.$router.push('/')
             }
         }
     }
