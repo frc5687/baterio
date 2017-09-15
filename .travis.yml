@@ -24,6 +24,7 @@ before_install:
 install:
   - pwd
   - cd ~/build/frc5687/baterio/app/; npm install
+  - cd ~/build/frc5687/baterio/servilo/; make install;
 script:
   # Lint la app
   # Lint the app
