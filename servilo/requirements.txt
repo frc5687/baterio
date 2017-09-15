@@ -11,12 +11,14 @@ graphql-core==1.1
 graphql-relay==0.4.5
 gunicorn==19.7.1
 idna==2.6
+iso8601==0.1.12
 itsdangerous==0.24
 Jinja2==2.9.6
 MarkupSafe==1.0
 promise==2.0.2
 pyasn1==0.3.4
 pyasn1-modules==0.1.4
+PyMySQL==0.7.11
 requests==2.18.4
 rsa==3.4.2
 six==1.10.0
