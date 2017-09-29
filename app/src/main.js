@@ -21,7 +21,7 @@ Vue.config.productionTip = false
 Vue.use(Quasar) // Install Quasar Framework
 Vue.use(VueI18n)
 Vue.use(GoogleAuth, {
-    client_id: '83770318022-77bpgvdogerhsu53j1154ihrevt1ovje.apps.googleusercontent.com',
+    client_id: '525115740517-1u093g1gav6fl7a4scafie5la3cggdqg.apps.googleusercontent.com',
     scope: 'https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile'
 })
 Vue.googleAuth().load()
