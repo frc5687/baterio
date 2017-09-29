@@ -1,58 +1,143 @@
 from uuid import uuid4
 import datetime
 from typing import Tuple
-from limak.db import DBKunsido, KunsidoV1, UzantoV1
+from limak.db import DBKunsido, KunsidoV1, UzantoV2
 from limak.api import esceptoj
+import bcrypt
 
 
-def havas_konton(google_id: str) -> bool:
+def estas_korekta_pasvorton(retpoŝto: str, pasvorto: str) -> bool:
+	"""
+	Kontrolu se la pasvorto estas la korekta pasvorto por la uzanto
+	:param retpoŝto: La retpoŝto de uzanto
+	:param pasvorto: La pasvorto por kontrolu
+	:return: Se la pasvorto estas korekta por la uzanto
+	"""
 	db_kunsido = DBKunsido()
-	row = db_kunsido.query(UzantoV1).filter(UzantoV1.google_id == google_id).first()
+	row = db_kunsido.query(UzantoV2).filter(UzantoV2.retpoŝto == retpoŝto).first()  # type: UzantoV2
+	if row is None:
+		esceptoj.NevalidaUzantoId('Nevalida Uzanto ID')
+	db_kunsido.close()
+	return bcrypt.hashpw(bytes(pasvorto, 'utf-8'), row.pasvorto) == row.pasvorto
+
+
+def havas_konton(google_id=None, retpoŝto=None, uzanto_id=None):
+	if google_id is not None:
+		return havas_konton_kun_google(google_id)
+	if retpoŝto is not None:
+		return havas_konto_kun_retpoŝto(retpoŝto)
+	if uzanto_id is not None:
+		return havas_konto_kun_uzanto_id(uzanto_id)
+
+
+def havas_konto_kun_uzanto_id(uzanto_id: str) -> bool:
+	db_kunsido = DBKunsido()
+	row = db_kunsido.query(UzantoV2).filter(UzantoV2.uzanto_id == uzanto_id).first()
 	db_kunsido.close()
 	return row is not None
 
 
-def akiri_uzanton_vico(google_id: str) -> UzantoV1:
+def havas_konto_kun_retpoŝto(retpoŝto: str) -> bool:
 	db_kunsido = DBKunsido()
-	vico = db_kunsido.query(UzantoV1).filter(UzantoV1.google_id == google_id).first()
+	row = db_kunsido.query(UzantoV2).filter(UzantoV2.retpoŝto == retpoŝto).first()
+	db_kunsido.close()
+	return row is not None
+
+
+def havas_konton_kun_google(google_id: str) -> bool:
+	db_kunsido = DBKunsido()
+	row = db_kunsido.query(UzantoV2).filter(UzantoV2.google_id == google_id).first()
+	db_kunsido.close()
+	return row is not None
+
+
+def akiri_uzanton_vico(google_id: str) -> UzantoV2:
+	db_kunsido = DBKunsido()
+	vico = db_kunsido.query(UzantoV2).filter(UzantoV2.google_id == google_id).first()
 	db_kunsido.close()
 	if vico is None:
 		raise esceptoj.GoogleIdNeTrovita('Google ID Ne Trovita')
 	return vico
 
 
-def akiri_uzanton_id(google_id: str) -> str:
+def akiri_uzanton_id(google_id=None, retpoŝto=None) -> str:
+	if google_id is not None:
+		return akiri_uzanton_id_kun_google_id(google_id)
+	if retpoŝto is not None:
+		return akiri_uzanton_id_kun_retpoŝto(retpoŝto)
+
+
+def akiri_uzanton_id_kun_retpoŝto(retpoŝto: str) -> str:
 	db_kunsido = DBKunsido()
-	vico = db_kunsido.query(UzantoV1).filter(UzantoV1.google_id == google_id).first()  # type: UzantoV1
+	vico = db_kunsido.query(UzantoV2).filter(UzantoV2.retpoŝto == retpoŝto).first()  # type: UzantoV2
+	db_kunsido.close()
+	if vico is None:
+		raise esceptoj.NevalidaRetpoŝto('Nevalida Retpoŝto')
+	return vico.uzanto_id
+
+
+def akiri_uzanton_id_kun_google_id(google_id: str) -> str:
+	db_kunsido = DBKunsido()
+	vico = db_kunsido.query(UzantoV2).filter(UzantoV2.google_id == google_id).first()  # type: UzantoV2
 	db_kunsido.close()
 	if vico is None:
 		raise esceptoj.GoogleIdNeTrovita('Google ID Ne Trovita')
 	return vico.uzanto_id
 
 
-def krei_konton(retpoŝto: str,
-				google_id: str,
-				unua_nomo: str,
-				familia_nomo: str,
-				plena_nomo: str,
-				bildo: str,
-				hd: str,
-				estos_administra=False,
-				uzanto_id=None) -> str:
+def krei_konton_kun_google(retpoŝto: str,
+						   google_id: str,
+						   unua_nomo: str,
+						   familia_nomo: str,
+						   plena_nomo: str,
+						   bildo: str,
+						   hd: str,
+						   estos_administra=False,
+						   uzanto_id=None):
 	if uzanto_id is None:
 		uzanto_id = str(uuid4())
 
 	db_kunsido = DBKunsido()
-	db_kunsido.add(UzantoV1(
+	db_kunsido.add(UzantoV2(
 		uzanto_id=uzanto_id,
 		estas_administranto=estos_administra,
 		retpoŝto=retpoŝto,
-		google_id=google_id,
 		unua_nomo=unua_nomo,
 		familia_nomo=familia_nomo,
-		plena_nomo=plena_nomo,
-		bildo=bildo,
-		hd=hd
+		pasvorto='',
+		google_id=google_id,
+		google_ekstra={
+			'plena_nomo': plena_nomo,
+			'bildo': bildo,
+			'hd': hd
+		}
+	))
+	db_kunsido.commit()
+
+	return uzanto_id
+
+
+def krei_konto_kun_pasvorto(retpoŝto: str,
+							unua_nomo: str,
+							familia_nomo: str,
+							pasvorto: str,
+							estos_administra=False,
+							uzanto_id=None):
+	if uzanto_id is None:
+		uzanto_id = str(uuid4())
+
+	hashed_pasvorto = bcrypt.hashpw(str.encode(pasvorto), bcrypt.gensalt())
+
+	db_kunsido = DBKunsido()
+	db_kunsido.add(UzantoV2(
+		uzanto_id=uzanto_id,
+		estas_administranto=estos_administra,
+		retpoŝto=retpoŝto,
+		unua_nomo=unua_nomo,
+		familia_nomo=familia_nomo,
+		pasvorto=hashed_pasvorto,
+		google_id='',
+		google_ekstra={}
 	))
 	db_kunsido.commit()
 

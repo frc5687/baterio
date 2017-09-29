@@ -75,7 +75,7 @@
                 client.mutate({
                     mutation: gql`
                         mutation ($aliroToken: ID!) {
-                            kreiKunsidon (aliroToken: $aliroToken) {
+                            kreiKunsidonKunGoogle (aliroToken: $aliroToken) {
                                 kunsidon {
                                     kunsidonId
                                     validaGxis
@@ -88,7 +88,7 @@
                     }
                 }).then(respondo => {
                     console.log(respondo)
-                    mem.$store.commit('starigisNovanKunsidon', respondo.data.kreiKunsidon.kunsidon)
+                    mem.$store.commit('starigisNovanKunsidon', respondo.data.kreiKunsidonKunGoogle.kunsidon)
                     skribuVuexStateAlLokaStokado()
                     mem.$router.push('/')
                 })
