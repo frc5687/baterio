@@ -7,6 +7,19 @@ import os
 Bazo = declarative_base()
 
 
+class UzantoV2(Bazo):
+	__tablename__ = 'UzantoV2'
+	uzanto_id = Column(String(36), primary_key=True)
+	estas_administranto = Column(Boolean)
+	retpoŝto = Column(Text(collation='utf8_general_ci'))
+	unua_nomo = Column(Text(collation='utf8_general_ci'))
+	familia_nomo = Column(Text(collation='utf8_general_ci'))
+	pasvorto = Column(Text(collation='utf8_general_ci'))
+	# Info de Google OAuth
+	google_id = Column(Text())
+	google_ekstra = Column(JSON)
+
+
 class UzantoV1(Bazo):
 	__tablename__ = 'UzantoV1'
 	uzanto_id = Column(String(36), primary_key=True)
