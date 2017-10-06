@@ -76,7 +76,7 @@ class KreiKontoKunRetposxto(graphene.Mutation):
 		if db_funkcioj.havas_konton(retpoŝto=args.get('retposxto')):
 			raise esceptoj.RetposxtoPrenita("Retposxto Prenita")
 
-		uzanto_id = db_funkcioj.krei_konto_kun_pasvorto(args.get('respostxto'),
+		uzanto_id = db_funkcioj.krei_konto_kun_pasvorto(args.get('retposxto'),
 														args.get('unua_nomo'),
 														args.get('familia_nomo'),
 														args.get('pasvorto'))
