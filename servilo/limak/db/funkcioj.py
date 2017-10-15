@@ -1,9 +1,126 @@
 from uuid import uuid4
 import datetime
-from typing import Tuple
 from limak.db import DBKunsido, KunsidoV1, UzantoV2
-from limak.api import esceptoj
+from limak import db
+from limak.api import esceptoj, types
 import bcrypt
+from typing import Tuple, List
+
+
+def krei_baterio(baterio_nomo: str, modelo: str, baterio_id=None) -> str:
+	"""
+	Krei la baterio kaj revenu la baterio_id
+	:param baterio_nomo:
+	:param modelo:
+	:param baterio_id:
+	:return:
+	"""
+	baterio_id = str(uuid4()) if baterio_id is None else baterio_id
+	db_kunsido = DBKunsido()
+	db_kunsido.add(db.BaterioV1(
+		baterio_id=baterio_id,
+		baterio_nomo=baterio_nomo,
+		modelo=modelo
+	))
+	db_kunsido.commit()
+	db_kunsido.close()
+	return baterio_id
+
+
+def krei_baterio_okazaĵo(baterio_id: str, data: dict, okazaĵo_id=None) -> str:
+	"""
+	Krei okazaĵo de baterio kaj revenue la kazaĵo_id
+	:param baterio_id:
+	:param data:
+	:param okazaĵo_id:
+	:return:
+	"""
+	okazaĵo_id = str(uuid4()) if okazaĵo_id is None else okazaĵo_id
+	db_kunsido = DBKunsido()
+	db_kunsido.add(db.BaterioOkazaĵoV1(
+		okazaĵo_id=okazaĵo_id,
+		baterio_id=baterio_id,
+		data=data
+	))
+	db_kunsido.commit()
+	db_kunsido.close()
+	return okazaĵo_id
+
+
+def forigi_baterio_okazaĵo(okazaĵo_id: str):
+	"""
+	Forigi baterio okazaĵoj kun la kazaĵo id
+	:param okazaĵo_id:
+	:return:
+	"""
+	db_kunsido = DBKunsido()
+	db_kunsido\
+		.query(db.BaterioOkazaĵoV1)\
+		.filter(db.BaterioOkazaĵoV1.okazaĵo_id == okazaĵo_id)\
+		.delete()
+	db_kunsido.commit()
+	db_kunsido.close()
+
+
+def forigi_baterio(baterio_id: str):
+	db_kunsido = DBKunsido()
+	db_kunsido\
+		.query(db.BaterioV1)\
+		.filter(db.BaterioV1.baterio_id == baterio_id)\
+		.delete()
+	db_kunsido.commit()
+	db_kunsido.close()
+
+
+def ĝisdatigo_baterio_nomo(baterio_id: str, baterio_nomo: str):
+	db_kunsido = DBKunsido()
+	db_kunsido\
+		.query(db.BaterioV1)\
+		.filter(db.BaterioV1.baterio_id == baterio_id)\
+		.update({
+			db.BaterioV1.baterio_nomo: baterio_nomo
+		})
+	db_kunsido.commit()
+	db_kunsido.close()
+
+
+def ĝisdatigo_baterio_modelo(baterio_id: str, modelo: str):
+	db_kunsido = DBKunsido()
+	db_kunsido\
+		.query(db.BaterioV1)\
+		.filter(db.BaterioV1.baterio_id == baterio_id)\
+		.update({
+			db.BaterioV1.modelo: modelo
+		})
+	db_kunsido.commit()
+	db_kunsido.close()
+
+
+def ĝisdatigo_baterio_okazaĵo_data(okazaĵo_id: str, data: dict):
+	db_kunsido = DBKunsido()
+	db_kunsido\
+		.query(db.BaterioOkazaĵoV1)\
+		.filter(db.BaterioOkazaĵoV1.okazaĵo_id == okazaĵo_id)\
+		.update({
+			db.BaterioOkazaĵoV1.data: data
+		})
+	db_kunsido.commit()
+	db_kunsido.close()
+
+
+def akiri_baterio_okazaĵoj(baterio_id: str) -> List[types.BaterioOkazajxo]:
+	db_kunsido = DBKunsido()
+	listo = []
+	for okazaĵo in db_kunsido.query(db.BaterioOkazaĵoV1).filter(db.BaterioOkazaĵoV1.baterio_id == baterio_id).all():  # type: db.BaterioOkazaĵoV1
+		listo.append(
+			types.BaterioOkazajxo(
+				okazajxo_id=okazaĵo.okazaĵo_id,
+				baterio_id=okazaĵo.baterio_id,
+				data=okazaĵo.data
+			)
+		)
+	db_kunsido.close()
+	return listo
 
 
 def estas_korekta_pasvorton(retpoŝto: str, pasvorto: str) -> bool:
