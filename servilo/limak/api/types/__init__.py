@@ -11,7 +11,7 @@ class Kunsidon(graphene.ObjectType):
 class Baterio(graphene.ObjectType):
 	baterio_id = graphene.NonNull(graphene.ID)
 	baterio_nomo = graphene.NonNull(graphene.String)
-	model = graphene.NonNull(graphene.String)
+	modelo = graphene.NonNull(graphene.String)
 
 
 class BaterioOkazajxo(graphene.ObjectType):
