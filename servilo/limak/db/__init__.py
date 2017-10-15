@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, create_engine, Text, DATETIME, JSON
 from sqlalchemy.dialects import mysql
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, relationship
 from sqlalchemy.ext.declarative import declarative_base
 import os
 
@@ -47,12 +47,16 @@ class BaterioV1(Bazo):
 	baterio_nomo = Column(Text(collation='utf8_general_ci'))
 	modelo = Column(Text(collation='utf8_general_ci'))
 
+	okazaĵoj = relationship('BaterioOkazaĵoV1', back_populates='baterio')
+
 
 class BaterioOkazaĵoV1(Bazo):
 	__tablename__ = 'BaterioOkazaĵoV1'
-	event_id = Column(String(36), primary_key=True)
+	okazaĵo_id = Column(String(36), primary_key=True)
 	baterio_id = Column(String(36))
 	data = Column(JSON)
+
+	baterio = relationship('BaterioV1', back_populates='okazaĵoj')
 
 
 motoro = create_engine(os.environ['datumbazoAdreso'])
