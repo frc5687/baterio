@@ -273,3 +273,11 @@ def krei_kunsidon(uzanto_id: str) -> Tuple[datetime.datetime, str]:
 	db_kunsido.commit()
 	db_kunsido.close()
 	return valida_ĝis, kunsidon_id
+
+
+def estas_valida_kunsido_id(kunsido_id: str) -> bool:
+	db_kunsido = DBKunsido()
+	vico = db_kunsido.query(db.KunsidoV1).filter(db.KunsidoV1.kunsidon_id == kunsido_id).first()  # type: db.KunsidoV1
+	if vico is not None:
+		return vico.valida_ĝis > datetime.datetime.utcnow()
+	return False
