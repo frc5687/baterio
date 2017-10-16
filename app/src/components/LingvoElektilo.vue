@@ -48,6 +48,14 @@
                     {
                         label: 'Esperanto',
                         value: 'eo'
+                    },
+                    {
+                        label: 'Español',
+                        value: 'es'
+                    },
+                    {
+                        label: 'Italiano',
+                        value: 'it'
                     }
                 ]
             }

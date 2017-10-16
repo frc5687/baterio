@@ -9,8 +9,22 @@ export const messages = {
             korpo: {
                 hejmo: 'Hejmo',
                 navigi: 'Navigi',
-                agordojn: 'Agordojn'
+                agordojn: 'Agordojn',
+                aldonu: 'Aldonu'
             }
+        },
+        aldonu: {
+            baterio: 'Baterio',
+            baterioOkazajxo: 'Baterio Okazaĵo',
+            baterioNomo: 'Baterio Nomo',
+            baterioModelo: 'Baterio Modelo',
+            laNomoDeLaBaterio: 'La Nomo de la Baterio',
+            laModeloDeLaBaterio: 'La Modelo de la Baterio',
+            bateriojNurPovasEstiAldonitajDumInterrete: 'Baterioj nur povas esti aldonitaj dum interrete',
+            sendu: 'Sendu',
+            baterioModeloTroMallonga: 'Baterio Modelo Tro Mallonga',
+            baterioNomoTroMallonga: 'Baterio Nomo Tro Mallonga',
+            baterioDetaloj: 'Baterio Detaloj'
         },
         mesagxoj: {
             saluton: 'Saluton',
@@ -30,8 +44,22 @@ export const messages = {
             korpo: {
                 hejmo: 'Home',
                 navigi: 'Navigate',
-                agordojn: 'Settings'
+                agordojn: 'Settings',
+                aldonu: 'Add'
             }
+        },
+        aldonu: {
+            baterio: 'Battery',
+            baterioOkazajxo: 'Battery Event',
+            baterioNomo: 'Baterio Name',
+            baterioModelo: 'Baterio Model',
+            laNomoDeLaBaterio: 'The Battery\'s Name',
+            laModeloDeLaBaterio: 'The Battery\'s Model',
+            bateriojNurPovasEstiAldonitajDumInterrete: 'Batteries can only be added while online',
+            sendu: 'Submit',
+            baterioModeloTroMallonga: 'Battery Model Too Short',
+            baterioNomoTroMallonga: 'Battery Name Too Short',
+            baterioDetaloj: 'Battery Details'
         },
         mesagxoj: {
             saluton: 'Hello',
@@ -45,5 +73,55 @@ export const messages = {
             lingvo: 'Language',
             elektuVianPreferatanLingvonPorMontriPagxojn: 'Choose your preferred language to display pages'
         }
+    },
+    es: {
+        kesto: {
+            korpo: {
+                hejmo: 'Inicio',
+                navigi: 'Navegar',
+                agordojn: 'Opciones',
+                aldonu: 'Agregar'
+            }
+        },
+        aldonu: {
+            baterio: 'Batería',
+            baterioOkazajxo: 'Evento de Bateria',
+            baterioNomo: 'Nombre de la Batería',
+            baterioModelo: 'Modela de la Batería',
+            laNomoDeLaBaterio: 'El Nombre de la Batería',
+            laModeloDeLaBaterio: 'El Modelo de la Batería',
+            bateriojNurPovasEstiAldonitajDumInterrete: 'Solo puedes agregar baterias mientras estás en línea.',
+            sendu: 'Enviar',
+            baterioModeloTroMallonga: 'Modelo de batería demasiado corto',
+            baterioNomoTroMallonga: 'Nombre de batería demasiado corto',
+            baterioDetaloj: 'Detalles de la Batería'
+        },
+        mesagxoj: {
+            saluton: 'Hola',
+            bonvoluEnsaluti: 'Por favor entrar a tu cuenta',
+            eraroDumSubskribo: 'Error cuando tratamos al entrar a tu cuenta',
+            provoViaAuxdado: 'Prueba tu audición',
+            elsaluti: 'Salga de su cuenta',
+            haltuTono: 'Detener el tono'
+        },
+        agordojn: {
+            lingvo: 'Idioma',
+            elektuVianPreferatanLingvonPorMontriPagxojn: 'Seleccione su idioma favorito para mostrar páginas'
+        }
     }
 }
+
+messages.it = Object.assign(messages.eo, {
+    agordojn: {
+        ...Object.assign(messages.eo.agordojn, {
+            lingvo: 'Lingua',
+            elektuVianPreferatanLingvonPorMontriPagxojn: 'Scegli la lingua preferita per visualizzare le pagine'
+        }),
+        ...Object.assign(messages.eo.kesto, {
+            ...Object.assign(messages.eo.kesto.korpo, {
+                hejmo: 'Anteriore',
+                agordojn: 'Opzioni'
+            })
+        })
+    }
+})
