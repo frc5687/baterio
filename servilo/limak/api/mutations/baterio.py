@@ -29,5 +29,52 @@ class RegistriBaterio(graphene.Mutation):
 		)
 
 
+class ForigiBaterio(graphene.Mutation):
+	class Input:
+		baterio_id = graphene.NonNull(graphene.String)
+
+	estis_sukcesa = graphene.NonNull(graphene.Boolean)
+
+	@staticmethod
+	def mutate(root, args, context, info):
+		db_funkcioj.forigi_baterio(args.get('baterio_id'))
+		return ForigiBaterio(estis_sukcesa=True)
+
+
+class GxisdatigoBaterioNomo(graphene.Mutation):
+	class Input:
+		baterio_id = graphene.NonNull(graphene.ID)
+		nova_baterio_nomo = graphene.NonNull(graphene.String)
+
+	baterio = graphene.Field(types.Baterio)
+
+	@staticmethod
+	def mutate(root, args, context, info):
+		baterio = db_funkcioj.ĝisdatigo_baterio_nomo(
+			args.get('baterio_id'),
+			args.get('nova_baterio_nomo')
+		)
+		return GxisdatigoBaterioNomo(baterio=baterio)
+
+
+class GxisdatigoBaterioModelo(graphene.Mutation):
+	class Input:
+		baterio_id = graphene.NonNull(graphene.ID)
+		nova_baterio_modelo = graphene.NonNull(graphene.String)
+
+	baterio = graphene.Field(types.Baterio)
+
+	@staticmethod
+	def mutate(root, args, context, info):
+		baterio = db_funkcioj.ĝisdatigo_baterio_modelo(
+			args.get('baterio_id'),
+			args.get('nova_baterio_modelo')
+		)
+		return GxisdatigoBaterioModelo(baterio=baterio)
+
+
 class MutateBaterio(graphene.ObjectType):
 	registri_baterio = RegistriBaterio.Field()
+	forigi_baterio = ForigiBaterio.Field()
+	gxisdatigo_baterio_nomo = GxisdatigoBaterioNomo.Field()
+	gxisdatigo_baterio_modelo = GxisdatigoBaterioModelo.Field()
