@@ -32,3 +32,9 @@ class NevalidaRetpoŝto(Exception):
 	def __init__(self, message):
 		super().__init__(message)
 		self.message = str(message)
+
+
+class GeneraEraro(Exception):
+	def __init__(self, message):
+		super().__init__(message)
+		self.message = str(message)
