@@ -137,6 +137,21 @@ def akiri_baterio_okazaĵoj(baterio_id: str) -> List[types.BaterioOkazajxo]:
 	return listo
 
 
+def akiri_baterioj() -> List[types.Baterio]:
+	db_kunsido = DBKunsido()
+	listo = []
+	for baterio in db_kunsido.query(db.BaterioV1).all():
+		listo.append(
+			types.Baterio(
+				baterio_id=baterio.baterio_id,
+				baterio_nomo=baterio.baterio_nomo,
+				modelo=baterio.modelo
+			)
+		)
+	db_kunsido.close()
+	return listo
+
+
 def estas_korekta_pasvorton(retpoŝto: str, pasvorto: str) -> bool:
 	"""
 	Kontrolu se la pasvorto estas la korekta pasvorto por la uzanto
