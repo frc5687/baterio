@@ -16,7 +16,7 @@
             <lingvo-elektilo/>
             <div class="row items-center justify-center content-center" style="height: 60vh;">
                 <div>
-                    <p class="text-center">{{ $t('mesagxoj.bonvoluEnsaluti') }}</p>
+                    <p class="text-center">{{ $t('bonvoluEnsaluti') }}</p>
                     <br>
                     <div class="row justify-around">
                         <img src="~assets/btn_google_signin_light_normal_web.png" @click="signIn()"/>

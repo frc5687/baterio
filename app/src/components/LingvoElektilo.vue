@@ -1,8 +1,8 @@
 <template>
     <q-item>
         <q-item-main>
-            <q-field icon="language" :helper="$t('agordojn.elektuVianPreferatanLingvonPorMontriPagxojn')">
-                <q-select v-model="elektitaLingvo" :options="lingvoj" @change="agordiLingvon()" :float-label="$t('agordojn.lingvo')"/>
+            <q-field icon="language" :helper="$t('frazo_elektuVianPreferatanLingvonPorMontriPagxojn')">
+                <q-select v-model="elektitaLingvo" :options="lingvoj" @change="agordiLingvon()" :float-label="$t('lingvo')"/>
             </q-field>
         </q-item-main>
     </q-item>

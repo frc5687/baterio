@@ -20,7 +20,7 @@
                 exact
                 slot="title"
             >
-                {{ $t('aldonu.baterioOkazajxo') }}
+                {{ $t('baterioOkazajxo') }}
             </q-route-tab>
             <q-route-tab
                 icon="battery_std"
@@ -28,7 +28,7 @@
                 exact
                 slot="title"
             >
-                {{ $t('aldonu.baterio') }}
+                {{ $t('baterio') }}
             </q-route-tab>
         </q-tabs>
 

@@ -18,7 +18,7 @@
                 <q-item-separator/>
                 <q-item>
                     <div class="row justify-around" style="width: 100%">
-                        <q-btn @click="elsaluti()" color="negative">{{ $t('mesagxoj.elsaluti') }}</q-btn>
+                        <q-btn @click="elsaluti()" color="negative">{{ $t('elsaluti') }}</q-btn>
                     </div>
                 </q-item>
             </q-list>

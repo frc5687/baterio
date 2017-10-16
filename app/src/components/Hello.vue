@@ -13,7 +13,7 @@
         <korpo slot="left"/>
 
         <div class="layout-padding">
-            <p>{{ $t('mesagxoj.saluton') }}</p>
+            <p>{{ $t('saluton') }}</p>
         </div>
     </q-layout>
 </template>

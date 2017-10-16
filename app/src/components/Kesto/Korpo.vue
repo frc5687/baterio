@@ -1,18 +1,18 @@
 <template>
     <div>
         <q-list no-border link inset-delimiter>
-            <q-list-header>{{ $t('kesto.korpo.navigi') }}</q-list-header>
+            <q-list-header>{{ $t('kesto_navigi') }}</q-list-header>
             <q-side-link item to="/">
                 <q-item-side icon="home"/>
-                <q-item-main :label="$t('kesto.korpo.hejmo')"/>
+                <q-item-main :label="$t('kesto_hejmo')"/>
             </q-side-link>
             <q-side-link item to="/aldonu">
                 <q-item-side icon="note_add"/>
-                <q-item-main :label="$t('kesto.korpo.aldonu')"/>
+                <q-item-main :label="$t('kesto_aldonu')"/>
             </q-side-link>
             <q-side-link item to="/agordojn">
                 <q-item-side icon="settings"/>
-                <q-item-main :label="$t('kesto.korpo.agordojn')"/>
+                <q-item-main :label="$t('kesto_agordojn')"/>
             </q-side-link>
         </q-list>
     </div>
