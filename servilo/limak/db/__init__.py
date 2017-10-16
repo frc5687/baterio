@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, create_engine, Text, DATETIME, JSON
+from sqlalchemy import ForeignKey, Column, Integer, String, Boolean, create_engine, Text, DATETIME, JSON
 from sqlalchemy.dialects import mysql
 from sqlalchemy.orm import sessionmaker, relationship
 from sqlalchemy.ext.declarative import declarative_base
@@ -53,7 +53,7 @@ class BaterioV1(Bazo):
 class BaterioOkazaĵoV1(Bazo):
 	__tablename__ = 'BaterioOkazaĵoV1'
 	okazaĵo_id = Column(String(36), primary_key=True)
-	baterio_id = Column(String(36))
+	baterio_id = Column(String(36), ForeignKey('BaterioV1.baterio_id'))
 	data = Column(JSON)
 
 	baterio = relationship('BaterioV1', back_populates='okazaĵoj')
