@@ -89,5 +89,3 @@ messages.it = Object.assign({}, messages.eo, {
     frazo_elektuVianPreferatanLingvonPorMontriPagxojn: 'Scegli la lingua preferita per visualizzare le pagine',
     hejmo: 'Anteriore'
 })
-
-console.log(messages)
