@@ -54,9 +54,9 @@ def forigi_baterio_okazaĵo(okazaĵo_id: str):
 	:return:
 	"""
 	db_kunsido = DBKunsido()
-	db_kunsido\
-		.query(db.BaterioOkazaĵoV1)\
-		.filter(db.BaterioOkazaĵoV1.okazaĵo_id == okazaĵo_id)\
+	db_kunsido \
+		.query(db.BaterioOkazaĵoV1) \
+		.filter(db.BaterioOkazaĵoV1.okazaĵo_id == okazaĵo_id) \
 		.delete()
 	db_kunsido.commit()
 	db_kunsido.close()
@@ -64,46 +64,60 @@ def forigi_baterio_okazaĵo(okazaĵo_id: str):
 
 def forigi_baterio(baterio_id: str):
 	db_kunsido = DBKunsido()
-	db_kunsido\
-		.query(db.BaterioV1)\
-		.filter(db.BaterioV1.baterio_id == baterio_id)\
+	db_kunsido \
+		.query(db.BaterioV1) \
+		.filter(db.BaterioV1.baterio_id == baterio_id) \
 		.delete()
 	db_kunsido.commit()
 	db_kunsido.close()
 
 
-def ĝisdatigo_baterio_nomo(baterio_id: str, baterio_nomo: str):
+def ĝisdatigo_baterio_nomo(baterio_id: str, baterio_nomo: str) -> types.Baterio:
 	db_kunsido = DBKunsido()
-	db_kunsido\
-		.query(db.BaterioV1)\
-		.filter(db.BaterioV1.baterio_id == baterio_id)\
-		.update({
-			db.BaterioV1.baterio_nomo: baterio_nomo
-		})
+	vico = db_kunsido \
+		.query(db.BaterioV1) \
+		.filter(db.BaterioV1.baterio_id == baterio_id) \
+		.first()  # type: db.BaterioV1
+	if vico is None:
+		raise esceptoj.GeneraEraro('Nevalida Baterio ID')
+	vico.baterio_nomo = baterio_nomo
+	baterio = types.Baterio(
+		baterio_id=vico.baterio_id,
+		baterio_nomo=vico.baterio_nomo,
+		modelo=vico.modelo
+	)
 	db_kunsido.commit()
 	db_kunsido.close()
+	return baterio
 
 
-def ĝisdatigo_baterio_modelo(baterio_id: str, modelo: str):
+def ĝisdatigo_baterio_modelo(baterio_id: str, modelo: str) -> types.Baterio:
 	db_kunsido = DBKunsido()
-	db_kunsido\
-		.query(db.BaterioV1)\
-		.filter(db.BaterioV1.baterio_id == baterio_id)\
-		.update({
-			db.BaterioV1.modelo: modelo
-		})
+	vico = db_kunsido \
+		.query(db.BaterioV1) \
+		.filter(db.BaterioV1.baterio_id == baterio_id) \
+		.first()  # type: db.BaterioV1
+	if vico is None:
+		raise esceptoj.GeneraEraro('Nevalida Baterio ID')
+	vico.modelo = modelo
+	baterio = types.Baterio(
+		baterio_id=vico.baterio_id,
+		baterio_nomo=vico.baterio_nomo,
+		modelo=vico.modelo
+	)
 	db_kunsido.commit()
 	db_kunsido.close()
+	return baterio
 
 
 def ĝisdatigo_baterio_okazaĵo_data(okazaĵo_id: str, data: dict):
 	db_kunsido = DBKunsido()
-	db_kunsido\
-		.query(db.BaterioOkazaĵoV1)\
-		.filter(db.BaterioOkazaĵoV1.okazaĵo_id == okazaĵo_id)\
+	db_kunsido \
+		.query(db.BaterioOkazaĵoV1) \
+		.filter(db.BaterioOkazaĵoV1.okazaĵo_id == okazaĵo_id) \
 		.update({
-			db.BaterioOkazaĵoV1.data: data
-		})
+		db.BaterioOkazaĵoV1.data: data
+	})
 	db_kunsido.commit()
 	db_kunsido.close()
 
