@@ -27,7 +27,8 @@ export const messages = {
         elsaluti: 'Elsaluti',
         haltuTono: 'Haultu tono',
         lingvo: 'Lingvo',
-        frazo_elektuVianPreferatanLingvonPorMontriPagxojn: 'Elektu vian preferatan lingvon por montri paĝojn'
+        frazo_elektuVianPreferatanLingvonPorMontriPagxojn: 'Elektu vian preferatan lingvon por montri paĝojn',
+        baterioOkazajxoDetaloj: 'Baterio Okazaĵo Detaloj'
     }
 }
 
@@ -54,7 +55,8 @@ messages.en = Object.assign({}, messages.eo, {
     elsaluti: 'Sign out',
     haltuTono: 'Stop Tone',
     lingvo: 'Language',
-    frazo_elektuVianPreferatanLingvonPorMontriPagxojn: 'Choose your preferred language to display pages'
+    frazo_elektuVianPreferatanLingvonPorMontriPagxojn: 'Choose your preferred language to display pages',
+    baterioOkazajxoDetaloj: 'Battery Event Details'
 })
 
 messages.es = Object.assign({}, messages.eo, {
