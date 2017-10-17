@@ -164,7 +164,7 @@ def estas_korekta_pasvorton(retpoŝto: str, pasvorto: str) -> bool:
 	if row is None:
 		esceptoj.NevalidaUzantoId('Nevalida Uzanto ID')
 	db_kunsido.close()
-	return bcrypt.hashpw(bytes(pasvorto, 'utf-8'), row.pasvorto) == row.pasvorto
+	return bcrypt.checkpw(pasvorto.encode('utf-8'), row.pasvorto.encode('utf-8'))
 
 
 def havas_konton(google_id=None, retpoŝto=None, uzanto_id=None):
@@ -272,7 +272,7 @@ def krei_konto_kun_pasvorto(retpoŝto: str,
 	if uzanto_id is None:
 		uzanto_id = str(uuid4())
 
-	hashed_pasvorto = bcrypt.hashpw(str.encode(pasvorto), bcrypt.gensalt())
+	hashed_pasvorto = bcrypt.hashpw(pasvorto.encode('utf-8'), bcrypt.gensalt())
 
 	db_kunsido = DBKunsido()
 	db_kunsido.add(UzantoV2(
