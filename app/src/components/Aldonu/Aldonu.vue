@@ -6,7 +6,7 @@
             </q-btn>
 
             <q-toolbar-title>
-                Aldonu
+                {{ $t('kesto_aldonu') }}
                 <span slot="subtitle">baterio</span>
             </q-toolbar-title>
         </q-toolbar>
