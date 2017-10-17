@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {LocalStorage} from 'quasar'
+import { client } from './main.js'
+import gql from 'graphql-tag'
 
 Vue.use(Vuex)
 
@@ -9,7 +11,8 @@ let blankState = {
     kunsido: {
         kunsidonId: null,
         validaGxis: null
-    }
+    },
+    baterioj: []
 }
 
 let vuexState = Object.assign(blankState, (LocalStorage.get.item('vuexState') || {}))
@@ -28,6 +31,9 @@ export const store = new Vuex.Store({
         starigisNovanKunsidon (state, payload) {
             state.kunsido.kunsidonId = payload.kunsidonId
             state.kunsido.validaGxis = payload.validaGxis
+        },
+        starigisBaterioj (state, payload) {
+            state.baterioj = payload
         }
     },
     actions: {
@@ -39,6 +45,26 @@ export const store = new Vuex.Store({
             commit('starigisNovanKunsidon', {
                 kunsidonId: null,
                 validaGxis: null
+            })
+        },
+        akiriBaterioj ({ commit, state }) {
+            client.query({
+                query: gql`
+                    query ($kunsidonId: ID!) {
+                        baterio (kunsidonId: $kunsidonId) {
+                            baterioj {
+                                baterioNomo
+                                baterioId
+                                modelo
+                            }
+                        }
+                    }
+                `,
+                variables: {
+                    kunsidonId: state.kunsido.kunsidonId
+                }
+            }).then(respondo => {
+                commit('starigisBaterioj', respondo.data.baterio.baterioj)
             })
         }
     }
