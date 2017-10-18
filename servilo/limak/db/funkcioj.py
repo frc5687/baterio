@@ -286,6 +286,7 @@ def krei_konto_kun_pasvorto(retpoŝto: str,
 		google_ekstra={}
 	))
 	db_kunsido.commit()
+	db_kunsido.close()
 
 	return uzanto_id
 
