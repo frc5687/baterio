@@ -11,4 +11,5 @@ $ python run.py
 
 ```bash
 $ export datumbazoAdreso="mysql+pymysql://<salutnomon>:<pasvorto>@<datumbaza adreso>/<datumbaza nomo>?charset=utf8mb4"
+$ export loaderio="loaderio-2a339fd0965e71fbbc8183c62aca4297" # (nedeviga) por loader.io
 ```

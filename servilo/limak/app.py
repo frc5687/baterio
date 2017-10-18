@@ -3,6 +3,7 @@ from flask_graphql import GraphQLView
 from flask_cors import CORS
 import logging
 from limak.api import schema
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -10,6 +11,12 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 logging.getLogger('flask_cors').level = logging.DEBUG
 
 app.add_url_rule('/graphql', view_func=GraphQLView.as_view('graphql', schema=schema, graphiql=True))
+
+
+if 'loaderio' in os.environ:
+	@app.route('/' + os.environ['loaderio'] + '/')
+	def loaderio():
+		return os.environ['loaderio']
 
 
 @app.after_request
