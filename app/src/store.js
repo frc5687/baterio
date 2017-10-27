@@ -34,6 +34,9 @@ export const store = new Vuex.Store({
         },
         starigisBaterioj (state, payload) {
             state.baterioj = payload
+        },
+        aldoniBaterio (state, payload) {
+            state.baterioj = [...state.baterioj, payload]
         }
     },
     actions: {
@@ -65,6 +68,33 @@ export const store = new Vuex.Store({
                 }
             }).then(respondo => {
                 commit('starigisBaterioj', respondo.data.baterio.baterioj)
+            })
+        },
+        aldoniBaterio ({ commit, state }, payload) {
+            client.mutate({
+                mutation: gql`
+                    mutation ($kunsidonId: ID!, $baterioNomo: String!, $modelo: String!) {
+                        baterio(kunsidonId: $kunsidonId) {
+                            registriBaterio(baterioNomo: $baterioNomo, modelo: $modelo) {
+                                baterio {
+                                    baterioId
+                                    baterioNomo
+                                    modelo
+                                }
+                            }
+                        }
+                    }
+                `,
+                variables: {
+                    kunsidonId: state.kunsido.kunsidonId,
+                    baterioNomo: payload.baterioNomo,
+                    modelo: payload.modelo
+                }
+            }).then(respondo => {
+                commit('aldoniBaterio', {
+                    baterioId: respondo.data.baterio.registriBaterio.baterio.baterioId,
+                    baterioNomo: respondo.data.baterio.registriBaterio.baterio.baterioNomo
+                })
             })
         }
     }

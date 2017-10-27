@@ -38,6 +38,7 @@
                         <q-btn
                             :disabled="!baterioNomo || !baterioModelo"
                             color="primary"
+                            @click="$store.dispatch('aldoniBaterio', { baterioNomo, modelo: baterioModelo })"
                         >
                             {{ $t('sendu') }}
                         </q-btn>
@@ -64,7 +65,10 @@
         QBtn
     } from 'quasar'
 
+    import { store } from '../../store.js'
+
     export default {
+        store,
         components: {
             QList,
             QListHeader,
