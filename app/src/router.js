@@ -34,6 +34,10 @@ const router = new VueRouter({
                 { path: 'baterio', component: load('Aldonu/Baterio') }
             ]
         },
+        {
+            path: '/baterioj',
+            component: load('Baterioj/Baterioj')
+        },
         { path: '/', redirect: '/hejmo' },
         { path: '/*', component: load('Error404') }
     ]

@@ -28,7 +28,8 @@ export const messages = {
         haltuTono: 'Haultu tono',
         lingvo: 'Lingvo',
         frazo_elektuVianPreferatanLingvonPorMontriPagxojn: 'Elektu vian preferatan lingvon por montri paĝojn',
-        baterioOkazajxoDetaloj: 'Baterio Okazaĵo Detaloj'
+        baterioOkazajxoDetaloj: 'Baterio Okazaĵo Detaloj',
+        baterioj: 'Baterioj'
     }
 }
 
@@ -56,7 +57,8 @@ messages.en = Object.assign({}, messages.eo, {
     haltuTono: 'Stop Tone',
     lingvo: 'Language',
     frazo_elektuVianPreferatanLingvonPorMontriPagxojn: 'Choose your preferred language to display pages',
-    baterioOkazajxoDetaloj: 'Battery Event Details'
+    baterioOkazajxoDetaloj: 'Battery Event Details',
+    baterioj: 'Batteries'
 })
 
 messages.es = Object.assign({}, messages.eo, {
