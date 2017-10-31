@@ -6,7 +6,7 @@ Bonvenon! Ĉi tue estas la deponejo por la app de baterioj. La celo estas uzi Es
 
 ---
 
-## Antaŭa Fino Teknika Stako
+## Frontend Teknika Stako
 
 <p align="center"><a href="http://quasar-framework.org/" target="_blank"><img width="100"src="https://avatars3.githubusercontent.com/u/23064371?v=4&s=400"></a></p>
 
@@ -14,7 +14,7 @@ Bonvenon! Ĉi tue estas la deponejo por la app de baterioj. La celo estas uzi Es
 
 <p align="center"><a href="https://vuejs.org" target="_blank"><img width="100"src="https://vuejs.org/images/logo.png"></a></p>
 
-## Reen Fino Teknika Stako
+## Backend Teknika Stako
 
 <p align="center"><a href="http://graphene-python.org/" target="_blank"><img width="100"src="https://avatars0.githubusercontent.com/u/15002022?v=4&s=400"></a></p>
 
