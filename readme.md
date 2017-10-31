@@ -22,4 +22,8 @@ Bonvenon! Ĉi tue estas la deponejo por la app de baterioj. La celo estas uzi Es
 
 <p align="center"><a href="https://www.sqlalchemy.org/" target="_blank"><img width="100"src="https://www.sqlalchemy.org/img/sqla_logo.png"></a></p>
 
-<p align="center"><a href="https://www.docker.com/" target="_blank"><img width="100"src="https://www.docker.com/sites/default/files/vertical_large.png"></a></p>
+<p align="center"><img width="100"src="https://www.stratoscale.com/wp-content/uploads/AWS-Lambda.png">,</p>
+<p align="center">por kuranta nian senservilo backend.</p>
+
+<p align="center">Zappa,</p>
+<p align="center">por helpi kun deplorante nia flask servilo al AWS.</p>
