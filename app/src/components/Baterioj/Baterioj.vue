@@ -14,6 +14,11 @@
         <korpo slot="left"/>
 
         <div class="layout-padding">
+            <aldonu-modal ref="aldonuModal"/>
+
+            <q-fixed-position corner="bottom-right" :offset="[18, 18]">
+                <q-btn round icon="add" color="primary" @click="$refs.aldonuModal.open()"></q-btn>
+            </q-fixed-position>
             <q-search v-model="query"/>
             <q-list>
                 <q-item link>
@@ -29,6 +34,7 @@
 
 <script>
     import Korpo from '../Kesto/Korpo.vue'
+    import AldonuModal from './AldonuModal.vue'
 
     import {
         QLayout,
@@ -43,7 +49,8 @@
         QItem,
         QItemMain,
         QItemSide,
-        QSearch
+        QSearch,
+        QFixedPosition
     } from 'quasar'
 
     export default {
@@ -61,7 +68,9 @@
             QItem,
             QItemMain,
             QItemSide,
-            QSearch
+            QSearch,
+            QFixedPosition,
+            AldonuModal
         },
         data () {
             return {

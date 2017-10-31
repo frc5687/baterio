@@ -27,14 +27,6 @@ const router = new VueRouter({
         { path: '/hejmo', component: load('Hello') },
         { path: '/ensaluti', component: load('Ensaluti') },
         {
-            path: '/aldonu',
-            component: load('Aldonu/Aldonu'),
-            children: [
-                { path: '/', component: load('Aldonu/BaterioOkazaĵo') },
-                { path: 'baterio', component: load('Aldonu/Baterio') }
-            ]
-        },
-        {
             path: '/baterioj',
             component: load('Baterioj/Baterioj')
         },

@@ -29,7 +29,8 @@ export const messages = {
         lingvo: 'Lingvo',
         frazo_elektuVianPreferatanLingvonPorMontriPagxojn: 'Elektu vian preferatan lingvon por montri paĝojn',
         baterioOkazajxoDetaloj: 'Baterio Okazaĵo Detaloj',
-        baterioj: 'Baterioj'
+        baterioj: 'Baterioj',
+        novaBaterio: 'Nova Baterio'
     }
 }
 
@@ -58,7 +59,8 @@ messages.en = Object.assign({}, messages.eo, {
     lingvo: 'Language',
     frazo_elektuVianPreferatanLingvonPorMontriPagxojn: 'Choose your preferred language to display pages',
     baterioOkazajxoDetaloj: 'Battery Event Details',
-    baterioj: 'Batteries'
+    baterioj: 'Batteries',
+    novaBaterio: 'New Battery'
 })
 
 messages.es = Object.assign({}, messages.eo, {

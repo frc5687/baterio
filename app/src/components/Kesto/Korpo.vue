@@ -6,10 +6,6 @@
                 <q-item-side icon="home"/>
                 <q-item-main :label="$t('kesto_hejmo')"/>
             </q-side-link>
-            <q-side-link item to="/aldonu">
-                <q-item-side icon="note_add"/>
-                <q-item-main :label="$t('kesto_aldonu')"/>
-            </q-side-link>
             <q-side-link item to="/baterioj">
                 <q-item-side icon="battery_full"/>
                 <q-item-main :label="$t('baterioj')"/>
