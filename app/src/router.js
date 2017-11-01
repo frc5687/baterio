@@ -23,15 +23,12 @@ const router = new VueRouter({
      */
 
     routes: [
+        { path: '/', redirect: '/hejmo' },
         { path: '/agordojn', component: load('Agordojn') },
         { path: '/hejmo', component: load('Hello') },
         { path: '/ensaluti', component: load('Ensaluti') },
-        {
-            path: '/baterioj',
-            component: load('Baterioj/Baterioj')
-        },
-        { path: '/', redirect: '/hejmo' },
-        { path: '/*', component: load('Error404') }
+        { path: '/baterioj', component: load('Baterioj/Baterioj') },
+        { path: '*', component: load('Error404') }
     ]
 })
 
