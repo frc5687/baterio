@@ -103,6 +103,7 @@ export const store = new Vuex.Store({
                 baterioNomo: payload.baterioNomo,
                 modelo: payload.modelo
             })
+            skribuVuexStateAlLokaStokado()
         }
     }
 })

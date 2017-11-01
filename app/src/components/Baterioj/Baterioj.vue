@@ -21,9 +21,7 @@
             </q-fixed-position>
             <q-search v-model="query"/>
             <q-list>
-                <q-item link v-for="baterio in $store.state.baterioj" :key="baterio.baterioId">
-                    <q-item-main :label="baterio.baterioNomo"/>
-                </q-item>
+                <baterio-vico :baterio="baterio" v-for="baterio in $store.state.baterioj" :key="baterio.baterioId"/>
             </q-list>
         </div>
     </q-layout>
@@ -32,6 +30,7 @@
 <script>
     import Korpo from '../Kesto/Korpo.vue'
     import AldonuModal from './AldonuModal.vue'
+    import BaterioVico from './BaterioVico.vue'
     import { store } from '../../store.js'
 
     import {
@@ -48,7 +47,8 @@
         QItemMain,
         QItemSide,
         QSearch,
-        QFixedPosition
+        QFixedPosition,
+        QPopover
     } from 'quasar'
 
     export default {
@@ -69,7 +69,9 @@
             QItemSide,
             QSearch,
             QFixedPosition,
-            AldonuModal
+            AldonuModal,
+            QPopover,
+            BaterioVico
         },
         data () {
             return {
