@@ -115,7 +115,7 @@
                     modelo: this.baterioModelo
                 })
                 this.closeModal()
-                Toast.create.positive('Successfully Added New Battery')
+                Toast.create.positive(this.$t('sukceseAldonitaNovaBaterio'))
                 this.baterioNomoModifita = false
                 this.baterioModeloModifita = false
                 this.baterioNomo = ''
