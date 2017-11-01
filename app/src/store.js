@@ -37,6 +37,16 @@ export const store = new Vuex.Store({
         },
         aldoniBaterio (state, payload) {
             state.baterioj = [...state.baterioj, payload]
+        },
+        redaktiBaterio (state, payload) {
+            state.baterioj = state.baterioj.map(baterio => {
+                if (baterio.baterioId === payload.baterioId) {
+                    return Object.assign({}, baterio, payload)
+                }
+                else {
+                    return baterio
+                }
+            })
         }
     },
     actions: {
@@ -103,6 +113,10 @@ export const store = new Vuex.Store({
                 baterioNomo: payload.baterioNomo,
                 modelo: payload.modelo
             })
+            skribuVuexStateAlLokaStokado()
+        },
+        redaktiBaterio ({ commit }, payload) {
+            commit('redaktiBaterio', payload)
             skribuVuexStateAlLokaStokado()
         }
     }

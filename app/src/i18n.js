@@ -31,7 +31,9 @@ export const messages = {
         baterioOkazajxoDetaloj: 'Baterio Okazaĵo Detaloj',
         baterioj: 'Baterioj',
         novaBaterio: 'Nova Baterio',
-        sukceseAldonitaNovaBaterio: 'Sukcese Aldonita Nova Baterio'
+        sukceseAldonitaNovaBaterio: 'Sukcese Aldonita Nova Baterio',
+        'Redakti Nomon': 'Redakti Nomon',
+        'Redakti Modelo': 'Redakti Modelo'
     }
 }
 
@@ -62,7 +64,9 @@ messages.en = Object.assign({}, messages.eo, {
     baterioOkazajxoDetaloj: 'Battery Event Details',
     baterioj: 'Batteries',
     novaBaterio: 'New Battery',
-    sukceseAldonitaNovaBaterio: 'Successfully Added New Battery'
+    sukceseAldonitaNovaBaterio: 'Successfully Added New Battery',
+    'Redakti Nomon': 'Edit Name',
+    'Redakti Modelo': 'Edit Model'
 })
 
 messages.es = Object.assign({}, messages.eo, {
