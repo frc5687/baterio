@@ -28,6 +28,7 @@ const router = new VueRouter({
         { path: '/hejmo', component: load('Hello') },
         { path: '/ensaluti', component: load('Ensaluti') },
         { path: '/baterioj', component: load('Baterioj/Baterioj') },
+        { path: '/novaOkazajxo', component: load('NovaOkazajxo') },
         { path: '*', component: load('Error404') }
     ]
 })

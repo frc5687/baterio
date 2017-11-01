@@ -9,6 +9,10 @@
                 {{ $t('baterioj') }}
                 <span slot="subtitle">baterio</span>
             </q-toolbar-title>
+
+            <q-btn flat @click="$router.push('/novaOkazajxo')">
+                <q-icon name="add"/>
+            </q-btn>
         </q-toolbar>
 
         <korpo slot="left"/>
