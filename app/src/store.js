@@ -71,6 +71,7 @@ export const store = new Vuex.Store({
             })
         },
         aldoniBaterio ({ commit, state }, payload) {
+            /*
             client.mutate({
                 mutation: gql`
                     mutation ($kunsidonId: ID!, $baterioNomo: String!, $modelo: String!) {
@@ -96,6 +97,12 @@ export const store = new Vuex.Store({
                     baterioNomo: respondo.data.baterio.registriBaterio.baterio.baterioNomo
                 })
             })
+            */
+            commit('aldoniBaterio', {
+                baterioId: uuid4Gen(),
+                baterioNomo: payload.baterioNomo,
+                modelo: payload.modelo
+            })
         }
     }
 })
@@ -104,4 +111,28 @@ export function skribuVuexStateAlLokaStokado () {
     console.info('%cstore.js: %cskribante vuex state al loka stokado', 'color: blue', 'color: green')
     let stateToWrite = JSON.parse(JSON.stringify(store.state))
     LocalStorage.set('vuexState', stateToWrite)
+}
+
+export function uuid4Gen () {
+    let uuid = '', ii
+    for (ii = 0; ii < 32; ii += 1) {
+        switch (ii) {
+        case 8:
+        case 20:
+            uuid += '-'
+            uuid += (Math.random() * 16 | 0).toString(16)
+            break
+        case 12:
+            uuid += '-'
+            uuid += '4'
+            break
+        case 16:
+            uuid += '-'
+            uuid += (Math.random() * 4 | 8).toString(16)
+            break
+        default:
+            uuid += (Math.random() * 16 | 0).toString(16)
+        }
+    }
+    return uuid
 }

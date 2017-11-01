@@ -1,8 +1,8 @@
 <template>
-    <q-modal v-model="modalIsOpen" maximized :content-css="{minWidth: '80vw', minHeight: '80vh'}">
+    <q-modal ref="modal" maximized :content-css="{minWidth: '80vw', minHeight: '80vh'}">
         <q-modal-layout>
             <q-toolbar slot="header">
-                <q-btn flat @click="close()">
+                <q-btn flat @click="closeModal()">
                     <q-icon name="keyboard_arrow_left" />
                 </q-btn>
                 <q-toolbar-title>
@@ -49,7 +49,7 @@
                                 <q-btn
                                     :disabled="!baterioNomo || !baterioModelo"
                                     color="primary"
-                                    @click="$store.dispatch('aldoniBaterio', { baterioNomo, modelo: baterioModelo })"
+                                    @click="submit()"
                                 >
                                     {{ $t('sendu') }}
                                 </q-btn>
@@ -80,7 +80,8 @@
         QItem,
         QInput,
         QItemMain,
-        QBtn
+        QBtn,
+        Toast
     } from 'quasar'
     import { store } from '../../store.js'
 
@@ -102,11 +103,23 @@
             QBtn
         },
         methods: {
-            open () {
-                this.modalIsOpen = true
+            openModal () {
+                this.$refs.modal.open()
             },
-            close () {
-                this.modalIsOpen = false
+            closeModal () {
+                this.$refs.modal.close()
+            },
+            submit () {
+                this.$store.dispatch('aldoniBaterio', {
+                    baterioNomo: this.baterioNomo,
+                    modelo: this.baterioModelo
+                })
+                this.closeModal()
+                Toast.create.positive('Successfully Added New Battery')
+                this.baterioNomoModifita = false
+                this.baterioModeloModifita = false
+                this.baterioNomo = ''
+                this.baterioModelo = ''
             }
         },
         computed: {
@@ -122,8 +135,7 @@
                 baterioNomoModifita: false,
                 baterioModeloModifita: false,
                 baterioNomo: '',
-                baterioModelo: '',
-                modalIsOpen: false
+                baterioModelo: ''
             }
         }
     }

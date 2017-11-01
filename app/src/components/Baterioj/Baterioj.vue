@@ -17,15 +17,12 @@
             <aldonu-modal ref="aldonuModal"/>
 
             <q-fixed-position corner="bottom-right" :offset="[18, 18]">
-                <q-btn round icon="add" color="primary" @click="$refs.aldonuModal.open()"></q-btn>
+                <q-btn round icon="add" color="primary" @click="$refs.aldonuModal.openModal()"></q-btn>
             </q-fixed-position>
             <q-search v-model="query"/>
             <q-list>
-                <q-item link>
-                    <q-item-main label="Butterfingers"/>
-                </q-item>
-                <q-item link>
-                    <q-item-main label="Rick looks like Duffy"/>
+                <q-item link v-for="baterio in $store.state.baterioj" :key="baterio.baterioId">
+                    <q-item-main :label="baterio.baterioNomo"/>
                 </q-item>
             </q-list>
         </div>
@@ -35,6 +32,7 @@
 <script>
     import Korpo from '../Kesto/Korpo.vue'
     import AldonuModal from './AldonuModal.vue'
+    import { store } from '../../store.js'
 
     import {
         QLayout,
@@ -54,6 +52,7 @@
     } from 'quasar'
 
     export default {
+        store,
         components: {
             Korpo,
             QLayout,
