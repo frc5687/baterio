@@ -33,7 +33,16 @@ export const messages = {
         novaBaterio: 'Nova Baterio',
         sukceseAldonitaNovaBaterio: 'Sukcese Aldonita Nova Baterio',
         'Redakti Nomon': 'Redakti Nomon',
-        'Redakti Modelo': 'Redakti Modelo'
+        'Redakti Modelo': 'Redakti Modelo',
+        'Nova Baterio Okazajxo': 'Nova Baterio Okazajxo',
+        'Tensio Cxe 0 Amps': 'Tensio @ 0 Amps',
+        'Tensio Cxe 18 Amps': 'Tensio @ 18 Amps',
+        'Bonvolu Enmeti Valoron': 'Bonvolu Enmeti Valoron',
+        'La Loko de la Evento': 'La Loko de la Evento',
+        'Notoj': 'Notoj',
+        'Rezisto (Ohms)': 'Rezisto (Ohms)',
+        'Baterio': 'Baterio',
+        'Sukcese Aldonis Nova Baterio Okazajxo': 'Sukcese Aldonis Nova Baterio Okazajxo'
     }
 }
 
@@ -66,7 +75,16 @@ messages.en = Object.assign({}, messages.eo, {
     novaBaterio: 'New Battery',
     sukceseAldonitaNovaBaterio: 'Successfully Added New Battery',
     'Redakti Nomon': 'Edit Name',
-    'Redakti Modelo': 'Edit Model'
+    'Redakti Modelo': 'Edit Model',
+    'Nova Baterio Okazajxo': 'New Battery Event',
+    'Tensio Cxe 0 Amps': 'Voltage @ 0 Amps',
+    'Tensio Cxe 18 Amps': 'Voltage @ 18 Amps',
+    'Bonvolu Enmeti Valoron': 'Please Enter a Value',
+    'La Loko de la Evento': 'The Location of the Event',
+    'Notoj': 'Notes',
+    'Rezisto (Ohms)': 'Resistance (Ohms)',
+    'Baterio': 'Battery',
+    'Sukcese Aldonis Nova Baterio Okazajxo': 'Successfully Added New Battery Event'
 })
 
 messages.es = Object.assign({}, messages.eo, {

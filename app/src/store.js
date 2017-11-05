@@ -12,7 +12,23 @@ let blankState = {
         kunsidonId: null,
         validaGxis: null
     },
-    baterioj: []
+    baterioj: [],
+    baterioOkazajxoj: [],
+    lokoj: [
+        {
+            label: 'Battle Of the Bay',
+            value: '2017nhbb'
+        },
+        {
+            label: 'Granite State',
+            value: '2018nhgrs'
+        },
+        {
+            label: 'New England District Championship',
+            value: '2018necmp'
+        }
+    ],
+    defauxltaLoko: '2017nhbb'
 }
 
 let vuexState = Object.assign(blankState, (LocalStorage.get.item('vuexState') || {}))
@@ -22,6 +38,19 @@ export const store = new Vuex.Store({
     getters: {
         neEkspiritaKunsido: state => {
             return state.kunsido.validaGxis !== null && new Date(state.kunsido.validaGxis) > new Date()
+        },
+        defauxltaLoko: state => {
+            return state.lokoj.filter((loko, index, arr) => {
+                return loko.value === state.defauxltaLoko
+            })[0] || null
+        },
+        bateriojPorSelect: state => {
+            return state.baterioj.map(baterio => {
+                return {
+                    label: baterio.baterioNomo,
+                    value: baterio.baterioId
+                }
+            })
         }
     },
     mutations: {
@@ -37,6 +66,9 @@ export const store = new Vuex.Store({
         },
         aldoniBaterio (state, payload) {
             state.baterioj = [...state.baterioj, payload]
+        },
+        aldoniBaterioOkazajxo (state, payload) {
+            state.baterioOkazajxo = [...state.baterioOkazajxo, payload]
         },
         redaktiBaterio (state, payload) {
             state.baterioj = state.baterioj.map(baterio => {
@@ -113,6 +145,12 @@ export const store = new Vuex.Store({
                 baterioNomo: payload.baterioNomo,
                 modelo: payload.modelo
             })
+            skribuVuexStateAlLokaStokado()
+        },
+        aldoniBaterioOkazajxo ({ commit }, payload) {
+            commit('aldoniBaterioOkazajxo', Object.assign({}, payload, {
+                baterioOkazajxoIdL: uuid4Gen()
+            }))
             skribuVuexStateAlLokaStokado()
         },
         redaktiBaterio ({ commit }, payload) {
