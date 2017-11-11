@@ -64,7 +64,7 @@ export const store = new Vuex.Store({
         aldoniBaterio (state, payload) {
             Vue.set(state.baterioj, payload.baterioId, payload)
         },
-        aldoniBaterioOkazajxo (state, payload) {
+        aldoniBaterioOkazajxo_ (state, payload) {
             Vue.set(state.baterioOkazajxoj, payload.baterioOkazajxoId, payload)
         },
         redaktiBaterio (state, payload) {
@@ -198,11 +198,11 @@ export const store = new Vuex.Store({
          * @param commit
          * @param {object} payload
          */
-        aldoniBaterioOkazajxo_ ({ commit }, payload) {
+        aldoniBaterioOkazajxo ({ commit }, payload) {
             console.log(payload)
             let newPayload = { ...payload, baterioOkazajxoId: uuid4Gen() }
             console.log(newPayload)
-            commit('aldoniBaterioOkazajxo', newPayload)
+            commit('aldoniBaterioOkazajxo_', newPayload)
             skribuVuexStateAlLokaStokado()
         },
         /**

@@ -186,7 +186,7 @@
         },
         methods: {
             submit () {
-                this.$store.dispatch('aldoniBaterioOkazajxo_', {
+                this.$store.dispatch('aldoniBaterioOkazajxo', {
                     loko: this.loko,
                     tempo: this.tempo,
                     baterioId: this.baterioId,
