@@ -11,14 +11,14 @@ require(`./themes/app.${__THEME}.styl`)
 // require(`quasar/dist/quasar.ie.${__THEME}.css`)
 
 import Vue from 'vue'
-import Quasar from 'quasar'
+import Quasar, { AddressbarColor } from 'quasar'
 import router from './router'
 import VueI18n from 'vue-i18n'
 import GoogleAuth from 'vue-google-oauth'
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
-
 Vue.config.productionTip = false
 Vue.use(Quasar) // Install Quasar Framework
+AddressbarColor.set('#BE1E2D')
 Vue.use(VueI18n)
 Vue.use(GoogleAuth, {
     client_id: '525115740517-1u093g1gav6fl7a4scafie5la3cggdqg.apps.googleusercontent.com',
