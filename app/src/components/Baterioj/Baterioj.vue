@@ -25,7 +25,7 @@
             </q-fixed-position>
             <q-search v-model="query"/>
             <q-list>
-                <baterio-vico :baterio="baterio" v-for="baterio in $store.state.baterioj" :key="baterio.baterioId"/>
+                <baterio-vico :baterioId="baterioId" v-for="baterioId in Object.keys($store.state.baterioj)" :key="baterioId"/>
             </q-list>
         </div>
     </q-layout>

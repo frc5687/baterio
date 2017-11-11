@@ -40,10 +40,11 @@
         QItemTile,
     } from 'quasar'
     import { store } from '../../store.js'
+    import { mapState } from 'vuex'
 
     export default {
         store,
-        props: ['baterio'],
+        props: ['baterioId'],
         components: {
             QLayout,
             QToolbar,
@@ -62,6 +63,15 @@
             QPopover,
             QItemTile,
         },
+        computed: mapState({
+            baterio (state) {
+                return Object.assign({
+                    baterioId: '',
+                    baterioNomo: '',
+                    modelo: '',
+                }, state.baterioj[this.baterioId])
+            },
+        }),
         methods: {
             redaktiNomon () {
                 let self = this

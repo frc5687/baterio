@@ -12,8 +12,8 @@ let blankState = {
         kunsidonId: null,
         validaGxis: null,
     },
-    baterioj: [],
-    baterioOkazajxoj: [],
+    baterioj: {},
+    baterioOkazajxoj: {},
     lokoj: [
         {
             label: 'Battle Of the Bay',
@@ -45,7 +45,7 @@ export const store = new Vuex.Store({
             })[0] || null
         },
         bateriojPorSelect: state => {
-            return state.baterioj.map(baterio => {
+            return Object.values(state.baterioj).map(baterio => {
                 return {
                     label: baterio.baterioNomo,
                     value: baterio.baterioId,
@@ -61,24 +61,14 @@ export const store = new Vuex.Store({
             state.kunsido.kunsidonId = payload.kunsidonId
             state.kunsido.validaGxis = payload.validaGxis
         },
-        starigisBaterioj (state, payload) {
-            state.baterioj = payload
-        },
         aldoniBaterio (state, payload) {
-            state.baterioj = [...state.baterioj, payload]
+            Vue.set(state.baterioj, payload.baterioId, payload)
         },
         aldoniBaterioOkazajxo (state, payload) {
-            state.baterioOkazajxo = [...state.baterioOkazajxo, payload]
+            Vue.set(state.baterioOkazajxo, payload.baterioOkazajxoId, payload)
         },
         redaktiBaterio (state, payload) {
-            state.baterioj = state.baterioj.map(baterio => {
-                if (baterio.baterioId === payload.baterioId) {
-                    return Object.assign({}, baterio, payload)
-                }
-                else {
-                    return baterio
-                }
-            })
+            Vue.set(state.baterioj, payload.baterioId, payload)
         },
     },
     actions: {
@@ -109,7 +99,8 @@ export const store = new Vuex.Store({
                     kunsidonId: state.kunsido.kunsidonId,
                 },
             }).then(respondo => {
-                commit('starigisBaterioj', respondo.data.baterio.baterioj)
+                respondo.data.baterio.baterioj.forEach((baterio) => commit('aldoniBaterio', baterio))
+                skribuVuexStateAlLokaStokado()
             })
         },
         aldoniBaterio ({ commit, state }, payload) {
@@ -149,7 +140,7 @@ export const store = new Vuex.Store({
         },
         aldoniBaterioOkazajxo ({ commit }, payload) {
             commit('aldoniBaterioOkazajxo', Object.assign({}, payload, {
-                baterioOkazajxoIdL: uuid4Gen(),
+                baterioOkazajxoId: uuid4Gen(),
             }))
             skribuVuexStateAlLokaStokado()
         },
