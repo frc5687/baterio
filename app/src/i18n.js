@@ -42,7 +42,13 @@ export const messages = {
         'Notoj': 'Notoj',
         'Rezisto (Ohms)': 'Rezisto (Ohms)',
         'Baterio': 'Baterio',
-        'Sukcese Aldonis Nova Baterio Okazajxo': 'Sukcese Aldonis Nova Baterio Okazajxo'
+        'Sukcese Aldonis Nova Baterio Okazajxo': 'Sukcese Aldonis Nova Baterio Okazajxo',
+        'Ellasilon': 'Ellasilon',
+        'Submetita al Matcxo': 'Submetita al Matcxo',
+        'Konektita al Cxarmo': 'Konektita al Cxarmo',
+        'Ricevis de Matcxo': 'Ricevis de Matcxo',
+        'Malkonektita de Cxarmo': 'Malkonektita de Cxarmo',
+        'Zorge': 'Zorge'
     }
 }
 
@@ -84,7 +90,13 @@ messages.en = Object.assign({}, messages.eo, {
     'Notoj': 'Notes',
     'Rezisto (Ohms)': 'Resistance (Ohms)',
     'Baterio': 'Battery',
-    'Sukcese Aldonis Nova Baterio Okazajxo': 'Successfully Added New Battery Event'
+    'Sukcese Aldonis Nova Baterio Okazajxo': 'Successfully Added New Battery Event',
+    'Ellasilon': 'Trigger',
+    'Submetita al Matcxo': 'Submitted to Match',
+    'Konektita al Cxarmo': 'Connected to Charger',
+    'Ricevis de Matcxo': 'Received from Match',
+    'Malkonektita de Cxarmo': 'Disconnected from Charger',
+    'Zorge': 'Charge'
 })
 
 messages.es = Object.assign({}, messages.eo, {
