@@ -1,5 +1,5 @@
 <template>
-    <q-item link>
+    <q-item highlight>
         <q-item-main>
             <q-item-tile label>{{ baterio.baterioNomo }}</q-item-tile>
             <q-item-tile sublabel>{{ baterio.modelo }}</q-item-tile>
