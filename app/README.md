@@ -22,3 +22,5 @@ $ quasar build
 # lint code
 $ quasar lint
 ```
+
+* Make sure you are running the graphql server as well
