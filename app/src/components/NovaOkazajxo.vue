@@ -39,6 +39,19 @@
                 <q-item>
                     <q-item-main>
                         <q-field
+                            :error="false"
+                        >
+                            <q-select
+                                v-model="ellasilon"
+                                :options="ellasilonEbloj"
+                                :float-label="$t('Ellasilon')"
+                            />
+                        </q-field>
+                    </q-item-main>
+                </q-item>
+                <q-item>
+                    <q-item-main>
+                        <q-field
                             :error="tensioCxe0Modifita && !validaTensioCxe0"
                             :error-label="$t('Bonvolu Enmeti Valoron')"
                         >
@@ -188,7 +201,26 @@
                 tensioCxe18: null,
                 rezistoModifita: false,
                 rezisto: null,
-                notoj: ''
+                notoj: '',
+                ellasilon: '',
+                ellasilonEbloj: [
+                    {
+                        label: this.$t('Submetita al Matcxo'),
+                        value: 'Submetita al Matcxo'
+                    },
+                    {
+                        label: this.$t('Konektita al Cxarmo'),
+                        value: 'Konektita al Cxarmo'
+                    },
+                    {
+                        label: this.$t('Ricevis de Matcxo'),
+                        value: 'Ricevis de Matcxo'
+                    },
+                    {
+                        label: this.$t('Malkonektita de Cxarmo'),
+                        value: 'Malkonektita de Cxarmo'
+                    }
+                ]
             }
         }
     }
