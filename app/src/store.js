@@ -251,6 +251,10 @@ export const store = new Vuex.Store({
     },
 })
 
+export function stateAsString () {
+    return JSON.stringify(store.state)
+}
+
 export function skribuVuexStateAlLokaStokado () {
     console.info('%cstore.js: %cskribante vuex state al loka stokado', 'color: blue', 'color: green')
     let stateToWrite = JSON.parse(JSON.stringify(store.state))

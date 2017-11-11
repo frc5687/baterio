@@ -61,6 +61,7 @@ export const messages = {
         'Vidi': 'Vidi',
         'Baterio Okazaĵoj': 'Baterio Okazaĵoj',
         'Baterio Okazaĵo Forigita': 'Baterio Okazaĵo forigita',
+        'Servilo': 'Servilo',
     },
 }
 
@@ -119,6 +120,7 @@ messages.en = Object.assign({}, messages.eo, {
     'Vidi': 'View',
     'Baterio Okazajxoj': 'Battery Events',
     'Baterio Okazaĵo Forigita': 'Battery Event Deleted',
+    'Servilo': 'Server',
 })
 
 messages.es = Object.assign({}, messages.eo, {
