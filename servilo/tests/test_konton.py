@@ -1,14 +1,12 @@
+from limak.api import schema
 import requests
 import json
-import uuid
+from uuid import uuid4
 import names
 
 
-def test_konton(api_endpoint=None, verbose=False):
-	api_endpoint = 'http://localhost:8000/graphql' if api_endpoint is None else api_endpoint
-
-	payload = {
-		'query': '''
+def test_konton(verbose=False):
+	query = '''
 		mutation TestKonton ($retposxto: String!, $unuaNomo: String!, $familiaNomo: String!, $pasvorto: String!) {
 			kreiKontoKunRetposxto (retposxto: $retposxto, unuaNomo: $unuaNomo, familiaNomo: $familiaNomo, pasvorto: $pasvorto) { 
 				kunsidon {
@@ -17,28 +15,28 @@ def test_konton(api_endpoint=None, verbose=False):
 				}
 			} 
 		}
-		''',
-		'variables': json.dumps({
-			'retposxto': str(uuid.uuid4()) + '@theoutliers.org',
-			'unuaNomo': names.get_first_name(),
-			'familiaNomo': names.get_last_name(),
-			'pasvorto': str(uuid.uuid4())
-		})
+		'''
+	variables = {
+		'retposxto': str(uuid4()) + '@theoutliers.org',
+		'unuaNomo': names.get_first_name(),
+		'familiaNomo': names.get_last_name(),
+		'pasvorto': str(uuid4())
 	}
 
-	r = requests.post(api_endpoint, data=payload)
+	r = schema.execute(query, variable_values=variables)
 
 	def test_passed():
 		try:
-			return len(r.json()['data']['kreiKontoKunRetposxto']['kunsidon']['kunsidonId']) == 36
-		except:
+			return len(r.data['kreiKontoKunRetposxto']['kunsidon']['kunsidonId']) == 36
+		except Exception as e:
+			repr(e)
 			return False
 
 	if verbose and test_passed() is False:
-		print(json.dumps(r.json(), indent=4))
+		print(json.dumps(r.data, indent=4))
 
 	assert test_passed()
 
 
 if __name__ == '__main__':
-	print(test_konton('http://localhost:8000/graphql', verbose=True))
+	print(test_konton(verbose=True))
