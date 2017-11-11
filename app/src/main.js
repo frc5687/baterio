@@ -48,10 +48,14 @@ import 'quasar-extras/material-icons'
 // import 'quasar-extras/fontawesome'
 // import 'quasar-extras/animate'
 
+let uri = 'http://localhost:8000/graphql'
+
+if (PROD) {
+    uri = 'https://baterio.jcharante.com/graphql'
+}
+
 export const client = new ApolloClient({
-    networkInterface: createNetworkInterface({
-        uri: 'http://localhost:8000/graphql',
-    }),
+    networkInterface: createNetworkInterface({ uri }),
 })
 
 Quasar.start(() => {
