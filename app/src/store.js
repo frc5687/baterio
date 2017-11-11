@@ -10,25 +10,25 @@ let blankState = {
     lingvo: 'eo',
     kunsido: {
         kunsidonId: null,
-        validaGxis: null
+        validaGxis: null,
     },
     baterioj: [],
     baterioOkazajxoj: [],
     lokoj: [
         {
             label: 'Battle Of the Bay',
-            value: '2017nhbb'
+            value: '2017nhbb',
         },
         {
             label: 'Granite State',
-            value: '2018nhgrs'
+            value: '2018nhgrs',
         },
         {
             label: 'New England District Championship',
-            value: '2018necmp'
-        }
+            value: '2018necmp',
+        },
     ],
-    defauxltaLoko: '2017nhbb'
+    defauxltaLoko: '2017nhbb',
 }
 
 let vuexState = Object.assign(blankState, (LocalStorage.get.item('baterioVuexState') || {}))
@@ -48,10 +48,10 @@ export const store = new Vuex.Store({
             return state.baterioj.map(baterio => {
                 return {
                     label: baterio.baterioNomo,
-                    value: baterio.baterioId
+                    value: baterio.baterioId,
                 }
             })
-        }
+        },
     },
     mutations: {
         agordiLingvon (state, lingvo) {
@@ -79,7 +79,7 @@ export const store = new Vuex.Store({
                     return baterio
                 }
             })
-        }
+        },
     },
     actions: {
         agordiLingvon ({ commit }, lingvo) {
@@ -89,7 +89,7 @@ export const store = new Vuex.Store({
         klaraKunsido ({ commit }) {
             commit('starigisNovanKunsidon', {
                 kunsidonId: null,
-                validaGxis: null
+                validaGxis: null,
             })
         },
         akiriBaterioj ({ commit, state }) {
@@ -106,8 +106,8 @@ export const store = new Vuex.Store({
                     }
                 `,
                 variables: {
-                    kunsidonId: state.kunsido.kunsidonId
-                }
+                    kunsidonId: state.kunsido.kunsidonId,
+                },
             }).then(respondo => {
                 commit('starigisBaterioj', respondo.data.baterio.baterioj)
             })
@@ -143,21 +143,21 @@ export const store = new Vuex.Store({
             commit('aldoniBaterio', {
                 baterioId: uuid4Gen(),
                 baterioNomo: payload.baterioNomo,
-                modelo: payload.modelo
+                modelo: payload.modelo,
             })
             skribuVuexStateAlLokaStokado()
         },
         aldoniBaterioOkazajxo ({ commit }, payload) {
             commit('aldoniBaterioOkazajxo', Object.assign({}, payload, {
-                baterioOkazajxoIdL: uuid4Gen()
+                baterioOkazajxoIdL: uuid4Gen(),
             }))
             skribuVuexStateAlLokaStokado()
         },
         redaktiBaterio ({ commit }, payload) {
             commit('redaktiBaterio', payload)
             skribuVuexStateAlLokaStokado()
-        }
-    }
+        },
+    },
 })
 
 export function skribuVuexStateAlLokaStokado () {

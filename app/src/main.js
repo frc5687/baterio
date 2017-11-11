@@ -22,7 +22,7 @@ Vue.use(Quasar) // Install Quasar Framework
 Vue.use(VueI18n)
 Vue.use(GoogleAuth, {
     client_id: '525115740517-1u093g1gav6fl7a4scafie5la3cggdqg.apps.googleusercontent.com',
-    scope: 'https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile'
+    scope: 'https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile',
 })
 Vue.googleAuth().load()
 
@@ -31,7 +31,7 @@ import { store } from './store'
 
 export const i18n = new VueI18n({
     locale: store.state.lingvo,
-    messages
+    messages,
 })
 
 store.subscribe((mutation, state) => {
@@ -50,8 +50,8 @@ import 'quasar-extras/material-icons'
 
 export const client = new ApolloClient({
     networkInterface: createNetworkInterface({
-        uri: 'http://localhost:8000/graphql'
-    })
+        uri: 'http://localhost:8000/graphql',
+    }),
 })
 
 Quasar.start(() => {
@@ -60,6 +60,6 @@ Quasar.start(() => {
         el: '#q-app',
         i18n,
         router,
-        render: h => h(require('./App'))
+        render: h => h(require('./App')),
     })
 })

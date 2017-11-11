@@ -81,7 +81,7 @@
         QInput,
         QItemMain,
         QBtn,
-        Toast
+        Toast,
     } from 'quasar'
     import { store } from '../../store.js'
 
@@ -100,7 +100,7 @@
             QItem,
             QInput,
             QItemMain,
-            QBtn
+            QBtn,
         },
         methods: {
             openModal () {
@@ -112,7 +112,7 @@
             submit () {
                 this.$store.dispatch('aldoniBaterio', {
                     baterioNomo: this.baterioNomo,
-                    modelo: this.baterioModelo
+                    modelo: this.baterioModelo,
                 })
                 this.closeModal()
                 Toast.create.positive(this.$t('sukceseAldonitaNovaBaterio'))
@@ -120,7 +120,7 @@
                 this.baterioModeloModifita = false
                 this.baterioNomo = ''
                 this.baterioModelo = ''
-            }
+            },
         },
         computed: {
             validaBaterioNomo () {
@@ -128,15 +128,15 @@
             },
             validaBaterioModelo () {
                 return this.baterioModelo.length === 0
-            }
+            },
         },
         data () {
             return {
                 baterioNomoModifita: false,
                 baterioModeloModifita: false,
                 baterioNomo: '',
-                baterioModelo: ''
+                baterioModelo: '',
             }
-        }
+        },
     }
 </script>

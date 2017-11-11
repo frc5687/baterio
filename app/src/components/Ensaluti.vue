@@ -42,7 +42,7 @@
         QToolbarTitle,
         QBtn,
         QIcon,
-        Toast
+        Toast,
     } from 'quasar'
 
     export default {
@@ -54,10 +54,10 @@
             QToolbar,
             QToolbarTitle,
             QBtn,
-            QIcon
+            QIcon,
         },
         computed: mapState({
-            session: state => state.session
+            session: state => state.session,
         }),
         methods: {
             ...mapActions([]),
@@ -84,8 +84,8 @@
                         }
                     `,
                     variables: {
-                        aliroToken: aliroToken
-                    }
+                        aliroToken: aliroToken,
+                    },
                 }).then(respondo => {
                     console.log(respondo)
                     mem.$store.commit('starigisNovanKunsidon', respondo.data.kreiKunsidonKunGoogle.kunsidon)
@@ -96,12 +96,12 @@
             onSignInError (error) {
                 console.log('Error while Signing In', error)
                 Toast.create.negative({
-                    html: this.$t('mesagxoj.eraroDumSubskribo')
+                    html: this.$t('mesagxoj.eraroDumSubskribo'),
                 })
-            }
+            },
         },
         data () {
             return {}
-        }
+        },
     }
 </script>

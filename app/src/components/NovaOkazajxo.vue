@@ -140,7 +140,7 @@
         QItemMain,
         QBtn,
         QSelect,
-        Toast
+        Toast,
     } from 'quasar'
     import { store } from '../store.js'
 
@@ -161,13 +161,13 @@
             QInput,
             QItemMain,
             QBtn,
-            QSelect
+            QSelect,
         },
         methods: {
             submit () {
                 Toast.create.positive(this.$t('Sukcese Aldonis Nova Baterio Okazajxo'))
                 this.$router.go(-1)
-            }
+            },
         },
         computed: {
             baterio () {
@@ -186,7 +186,7 @@
             },
             validaBaterioId () {
                 return this.baterioId !== ''
-            }
+            },
         },
         data () {
             return {
@@ -206,22 +206,22 @@
                 ellasilonEbloj: [
                     {
                         label: this.$t('Submetita al Matcxo'),
-                        value: 'Submetita al Matcxo'
+                        value: 'Submetita al Matcxo',
                     },
                     {
                         label: this.$t('Konektita al Cxarmo'),
-                        value: 'Konektita al Cxarmo'
+                        value: 'Konektita al Cxarmo',
                     },
                     {
                         label: this.$t('Ricevis de Matcxo'),
-                        value: 'Ricevis de Matcxo'
+                        value: 'Ricevis de Matcxo',
                     },
                     {
                         label: this.$t('Malkonektita de Cxarmo'),
-                        value: 'Malkonektita de Cxarmo'
-                    }
-                ]
+                        value: 'Malkonektita de Cxarmo',
+                    },
+                ],
             }
-        }
+        },
     }
 </script>

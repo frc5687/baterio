@@ -33,7 +33,7 @@
         QBtn,
         QIcon,
         QList,
-        QListHeader
+        QListHeader,
     } from 'quasar'
 
     export default {
@@ -45,7 +45,7 @@
             QBtn,
             QIcon,
             QList,
-            QListHeader
-        }
+            QListHeader,
+        },
     }
 </script>

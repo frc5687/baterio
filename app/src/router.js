@@ -29,8 +29,8 @@ const router = new VueRouter({
         { path: '/ensaluti', component: load('Ensaluti') },
         { path: '/baterioj', component: load('Baterioj/Baterioj') },
         { path: '/novaOkazajxo', component: load('NovaOkazajxo') },
-        { path: '*', component: load('Error404') }
-    ]
+        { path: '*', component: load('Error404') },
+    ],
 })
 
 router.beforeEach((al, de, poste) => {

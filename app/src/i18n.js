@@ -48,8 +48,8 @@ export const messages = {
         'Konektita al Cxarmo': 'Konektita al Cxarmo',
         'Ricevis de Matcxo': 'Ricevis de Matcxo',
         'Malkonektita de Cxarmo': 'Malkonektita de Cxarmo',
-        'Zorge': 'Zorge'
-    }
+        'Zorge': 'Zorge',
+    },
 }
 
 messages.en = Object.assign({}, messages.eo, {
@@ -96,7 +96,7 @@ messages.en = Object.assign({}, messages.eo, {
     'Konektita al Cxarmo': 'Connected to Charger',
     'Ricevis de Matcxo': 'Received from Match',
     'Malkonektita de Cxarmo': 'Disconnected from Charger',
-    'Zorge': 'Charge'
+    'Zorge': 'Charge',
 })
 
 messages.es = Object.assign({}, messages.eo, {
@@ -122,12 +122,12 @@ messages.es = Object.assign({}, messages.eo, {
     elsaluti: 'Salga de su cuenta',
     haltuTono: 'Detener el tono',
     lingvo: 'Idioma',
-    frazo_elektuVianPreferatanLingvonPorMontriPagxojn: 'Seleccione su idioma favorito para mostrar páginas'
+    frazo_elektuVianPreferatanLingvonPorMontriPagxojn: 'Seleccione su idioma favorito para mostrar páginas',
 })
 
 messages.it = Object.assign({}, messages.eo, {
     kesto_agordojn: 'Opzioni',
     lingvo: 'Lingua',
     frazo_elektuVianPreferatanLingvonPorMontriPagxojn: 'Scegli la lingua preferita per visualizzare le pagine',
-    hejmo: 'Anteriore'
+    hejmo: 'Anteriore',
 })

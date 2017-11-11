@@ -24,7 +24,7 @@
         QItemSide,
         QList,
         QListHeader,
-        QSideLink
+        QSideLink,
     } from 'quasar'
 
     export default {
@@ -33,11 +33,11 @@
             QItemSide,
             QList,
             QListHeader,
-            QSideLink
+            QSideLink,
         },
         data () {
             return {}
-        }
+        },
     }
 </script>
 

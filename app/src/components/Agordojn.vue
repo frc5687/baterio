@@ -47,7 +47,7 @@
         QItem,
         QItemMain,
         QSelect,
-        QItemSeparator
+        QItemSeparator,
     } from 'quasar'
 
     export default {
@@ -66,13 +66,13 @@
             QItem,
             QItemMain,
             QSelect,
-            QItemSeparator
+            QItemSeparator,
         },
         methods: {
             elsaluti () {
                 this.$store.dispatch('klaraKunsido')
                 this.$router.push('/')
-            }
-        }
+            },
+        },
     }
 </script>

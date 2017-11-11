@@ -16,7 +16,7 @@
         QField,
         QItem,
         QItemMain,
-        QSelect
+        QSelect,
     } from 'quasar'
 
     export default {
@@ -24,15 +24,15 @@
             QField,
             QItem,
             QItemMain,
-            QSelect
+            QSelect,
         },
         methods: {
             agordiLingvon () {
                 store.dispatch('agordiLingvon', this.elektitaLingvo)
-            }
+            },
         },
         computed: mapState({
-            lingvo: state => state.lingvo
+            lingvo: state => state.lingvo,
         }),
         mounted () {
             this.elektitaLingvo = this.lingvo
@@ -43,22 +43,22 @@
                 lingvoj: [
                     {
                         label: 'English',
-                        value: 'en'
+                        value: 'en',
                     },
                     {
                         label: 'Esperanto',
-                        value: 'eo'
+                        value: 'eo',
                     },
                     {
                         label: 'Español',
-                        value: 'es'
+                        value: 'es',
                     },
                     {
                         label: 'Italiano',
-                        value: 'it'
-                    }
-                ]
+                        value: 'it',
+                    },
+                ],
             }
-        }
+        },
     }
 </script>

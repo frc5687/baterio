@@ -37,7 +37,7 @@
         QFixedPosition,
         QPopover,
         Dialog,
-        QItemTile
+        QItemTile,
     } from 'quasar'
     import { store } from '../../store.js'
 
@@ -60,7 +60,7 @@
             QSearch,
             QFixedPosition,
             QPopover,
-            QItemTile
+            QItemTile,
         },
         methods: {
             redaktiNomon () {
@@ -71,8 +71,8 @@
                         nomo: {
                             type: 'text',
                             label: self.$t('baterioNomo'),
-                            model: ''
-                        }
+                            model: '',
+                        },
                     },
                     buttons: [
                         'Cancel',
@@ -82,11 +82,11 @@
                                 console.log(data)
                                 console.log(self)
                                 self.$store.dispatch('redaktiBaterio', Object.assign({}, self.baterio, {
-                                    baterioNomo: data.nomo
+                                    baterioNomo: data.nomo,
                                 }))
-                            }
-                        }
-                    ]
+                            },
+                        },
+                    ],
                 })
             },
             redaktiModelo () {
@@ -97,8 +97,8 @@
                         modelo: {
                             type: 'text',
                             label: self.$t('baterioModelo'),
-                            model: ''
-                        }
+                            model: '',
+                        },
                     },
                     buttons: [
                         'Cancel',
@@ -108,13 +108,13 @@
                                 console.log(data)
                                 console.log(self)
                                 self.$store.dispatch('redaktiBaterio', Object.assign({}, self.baterio, {
-                                    modelo: data.modelo
+                                    modelo: data.modelo,
                                 }))
-                            }
-                        }
-                    ]
+                            },
+                        },
+                    ],
                 })
-            }
-        }
+            },
+        },
     }
 </script>

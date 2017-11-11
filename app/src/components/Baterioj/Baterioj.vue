@@ -52,7 +52,7 @@
         QItemSide,
         QSearch,
         QFixedPosition,
-        QPopover
+        QPopover,
     } from 'quasar'
 
     export default {
@@ -75,12 +75,12 @@
             QFixedPosition,
             AldonuModal,
             QPopover,
-            BaterioVico
+            BaterioVico,
         },
         data () {
             return {
-                query: ''
+                query: '',
             }
-        }
+        },
     }
 </script>
