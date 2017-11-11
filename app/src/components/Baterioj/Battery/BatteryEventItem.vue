@@ -6,7 +6,12 @@
         </q-item-main>
         <q-item-side right icon="more_vert">
             <q-popover ref="popover">
-                <p>To be implemented</p>
+                <q-list item-separator link>
+                    <q-item @click="$refs.popover.close()">
+                        <q-item-side icon="delete"/>
+                        <q-item-main :label="$t('Forigi')" @click="deleteBatteryEvent()"/>
+                    </q-item>
+                </q-list>
             </q-popover>
         </q-item-side>
     </q-item>
@@ -29,9 +34,9 @@
         QSearch,
         QFixedPosition,
         QPopover,
-        // Dialog,
+        Dialog,
         QItemTile,
-        // Toast,
+        Toast,
     } from 'quasar'
     import { mapState } from 'vuex'
 
@@ -70,6 +75,23 @@
                 }, state.baterioOkazajxoj[this.batteryEventId])
             },
         }),
-        methods: {},
+        methods: {
+            deleteBatteryEvent () {
+                let self = this
+                Dialog.create({
+                    title: self.$t('Ĉu vi certas?'),
+                    buttons: [
+                        'Cancel',
+                        {
+                            label: self.$t('Konfirmi'),
+                            handler () {
+                                Toast.create.positive(self.$t('Baterio Okazaĵo Forigita'))
+                                self.$store.dispatch('deleteBatteryEvent', self.batteryEventId)
+                            },
+                        },
+                    ],
+                })
+            },
+        },
     }
 </script>

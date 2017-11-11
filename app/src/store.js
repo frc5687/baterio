@@ -73,8 +73,20 @@ export const store = new Vuex.Store({
         deleteBattery_ (state, batteryId) {
             Vue.delete(state.baterioj, batteryId)
         },
+        deleteBatteryEvent_ (state, batteryEventId) {
+            Vue.delete(state.baterioOkazajxoj, batteryEventId)
+        },
     },
     actions: {
+        /**
+         * Delete a battery event from the vuex store
+         * @param commit
+         * @param batteryEventId
+         */
+        deleteBatteryEvent ({ commit }, batteryEventId) {
+            commit('deleteBatteryEvent_', batteryEventId)
+            skribuVuexStateAlLokaStokado()
+        },
         /**
          * Delete a battery from the vuex store
          * @param commit

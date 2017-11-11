@@ -60,6 +60,7 @@ export const messages = {
         'Skani QR Kodo': 'Skani QR Kodo',
         'Vidi': 'Vidi',
         'Baterio Okazaĵoj': 'Baterio Okazaĵoj',
+        'Baterio Okazaĵo Forigita': 'Baterio Okazaĵo forigita',
     },
 }
 
@@ -117,6 +118,7 @@ messages.en = Object.assign({}, messages.eo, {
     'Skani QR Kodo': 'Scan QR Code',
     'Vidi': 'View',
     'Baterio Okazajxoj': 'Battery Events',
+    'Baterio Okazaĵo Forigita': 'Battery Event Deleted',
 })
 
 messages.es = Object.assign({}, messages.eo, {
