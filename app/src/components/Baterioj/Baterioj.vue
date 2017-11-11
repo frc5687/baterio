@@ -10,9 +10,7 @@
                 <span slot="subtitle">baterio</span>
             </q-toolbar-title>
 
-            <q-btn flat @click="$router.push('/novaOkazajxo')">
-                <q-icon name="add"/>
-            </q-btn>
+            <cta/>
         </q-toolbar>
 
         <korpo slot="left"/>
@@ -35,6 +33,7 @@
     import Korpo from '../Kesto/Korpo.vue'
     import AldonuModal from './AldonuModal.vue'
     import BaterioVico from './BaterioVico.vue'
+    import Cta from '../Cta.vue'
     import { store } from '../../store.js'
 
     import {
@@ -58,6 +57,7 @@
     export default {
         store,
         components: {
+            Cta,
             Korpo,
             QLayout,
             QToolbar,

@@ -57,6 +57,7 @@ export const messages = {
         'Ĉi tio forigos': 'Ĉi tio forigos',
         'Baterio forigita': 'Baterio forigita',
         'Konfirmi': 'Konfirmi',
+        'Skani QR Kodo': 'Skani QR Kodo',
     },
 }
 
@@ -111,6 +112,7 @@ messages.en = Object.assign({}, messages.eo, {
     'Ĉi tio forigos': 'This will delete',
     'Baterio forigita': 'Battery deleted',
     'Konfirmi': 'Confirm',
+    'Skani QR Kodo': 'Scan QR Code',
 })
 
 messages.es = Object.assign({}, messages.eo, {

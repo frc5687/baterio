@@ -10,9 +10,7 @@
                 <span slot="subtitle">baterio</span>
             </q-toolbar-title>
 
-            <q-btn flat @click="$router.push('/novaOkazajxo')">
-                <q-icon name="add"/>
-            </q-btn>
+            <cta/>
         </q-toolbar>
 
         <korpo slot="left"/>
@@ -25,6 +23,7 @@
 
 <script>
     import Korpo from './Kesto/Korpo.vue'
+    import Cta from './Cta.vue'
 
     import {
         QLayout,
@@ -38,6 +37,7 @@
 
     export default {
         components: {
+            Cta,
             Korpo,
             QLayout,
             QToolbar,

@@ -9,9 +9,7 @@
                 baterio
             </q-toolbar-title>
 
-            <q-btn flat @click="$router.push('/novaOkazajxo')">
-                <q-icon name="add"/>
-            </q-btn>
+            <cta/>
         </q-toolbar>
 
         <korpo slot="left"/>
@@ -34,6 +32,7 @@
     import { store } from '../store'
     import Korpo from './Kesto/Korpo.vue'
     import LingvoElektilo from './LingvoElektilo.vue'
+    import Cta from './Cta.vue'
 
     import {
         QLayout,
@@ -53,6 +52,7 @@
     export default {
         store,
         components: {
+            Cta,
             Korpo,
             LingvoElektilo,
             QLayout,
