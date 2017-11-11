@@ -206,13 +206,47 @@ export const store = new Vuex.Store({
             skribuVuexStateAlLokaStokado()
         },
         /**
-         * Overwrites battery in vuex state. Used for making changes to battery name & model.
+         * Make changes to battery name & model (remote & local)
+         * @param state
          * @param commit
          * @param payload
          */
-        redaktiBaterio ({ commit }, payload) {
-            commit('redaktiBaterio', payload)
-            skribuVuexStateAlLokaStokado()
+        redaktiBaterio ({ state, commit }, payload) {
+            client.mutate({
+                mutation: gql`
+                    mutation ($kunsidonId: ID!, $baterioId: ID!, $baterioNomo: String!, $modelo: String!) {
+                        baterio(kunsidonId: $kunsidonId) {
+                            gxisdatigoBaterioNomo(baterioId: $baterioId, novaBaterioNomo: $baterioNomo) {
+                                baterio {
+                                    baterioId
+                                    baterioNomo
+                                    modelo
+                                }
+                            }
+                            gxisdatigoBaterioModelo(baterioId: $baterioId, novaBaterioModelo: $modelo) {
+                                baterio {
+                                    baterioId
+                                    baterioNomo
+                                    modelo
+                                }
+                            }
+                        }
+                    }
+                `,
+                variables: {
+                    kunsidonId: state.kunsido.kunsidonId,
+                    baterioId: payload.baterioId,
+                    baterioNomo: payload.baterioNomo,
+                    modelo: payload.modelo,
+                },
+            }).then(respondo => {
+                commit('aldoniBaterio', {
+                    baterioId: respondo.data.baterio.gxisdatigoBaterioModelo.baterio.baterioId,
+                    baterioNomo: respondo.data.baterio.gxisdatigoBaterioModelo.baterio.baterioNomo,
+                    modelo: respondo.data.baterio.gxisdatigoBaterioModelo.baterio.modelo,
+                })
+                skribuVuexStateAlLokaStokado()
+            })
         },
     },
 })
