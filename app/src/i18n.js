@@ -1,6 +1,8 @@
 /*
 Vue i18n havas problemojn kun unikodaj klavoj.
 Pro tio ni uzas la x-notacion.
+
+EDIT: Turns out you can use unicode if using quotes for key definitions.
  */
 
 export const messages = {
@@ -49,6 +51,12 @@ export const messages = {
         'Ricevis de Matcxo': 'Ricevis de Matcxo',
         'Malkonektita de Cxarmo': 'Malkonektita de Cxarmo',
         'Zorge': 'Zorge',
+        'Forigi': 'Forigi',
+        'Forigi Baterio': 'Forigi Baterio',
+        'Ĉu vi certas?': 'Ĉu vi certas?',
+        'Ĉi tio forigos': 'Ĉi tio forigos',
+        'Baterio forigita': 'Baterio forigita',
+        'Konfirmi': 'Konfirmi',
     },
 }
 
@@ -97,6 +105,12 @@ messages.en = Object.assign({}, messages.eo, {
     'Ricevis de Matcxo': 'Received from Match',
     'Malkonektita de Cxarmo': 'Disconnected from Charger',
     'Zorge': 'Charge',
+    'Forigi': 'Delete',
+    'Forigi Baterio': 'Delete Battery',
+    'Ĉu vi certas?': 'Are you sure?',
+    'Ĉi tio forigos': 'This will delete',
+    'Baterio forigita': 'Battery deleted',
+    'Konfirmi': 'Confirm',
 })
 
 messages.es = Object.assign({}, messages.eo, {

@@ -13,6 +13,9 @@
                     <q-item @click="$refs.popover.close()">
                         <q-item-main :label="$t('Redakti Modelo')" @click="redaktiModelo()"/>
                     </q-item>
+                    <q-item @click="$refs.popover.close()">
+                        <q-item-main :label="$t('Forigi Baterio')" @click="deleteBattery()"/>
+                    </q-item>
                 </q-list>
             </q-popover>
         </q-item-side>
@@ -38,6 +41,7 @@
         QPopover,
         Dialog,
         QItemTile,
+        Toast,
     } from 'quasar'
     import { store } from '../../store.js'
     import { mapState } from 'vuex'
@@ -73,6 +77,23 @@
             },
         }),
         methods: {
+            deleteBattery () {
+                let self = this
+                Dialog.create({
+                    title: self.$t('Ĉu vi certas?'),
+                    message: `${self.$t('Ĉi tio forigos')} ${self.baterio.baterioNomo}!`,
+                    buttons: [
+                        'Cancel',
+                        {
+                            label: self.$t('Konfirmi'),
+                            handler () {
+                                Toast.create.positive(self.$t('Baterio forigita'))
+                                self.$store.dispatch('deleteBattery', self.baterioId)
+                            },
+                        },
+                    ],
+                })
+            },
             redaktiNomon () {
                 let self = this
                 Dialog.create({

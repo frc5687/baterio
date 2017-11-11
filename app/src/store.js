@@ -70,18 +70,44 @@ export const store = new Vuex.Store({
         redaktiBaterio (state, payload) {
             Vue.set(state.baterioj, payload.baterioId, payload)
         },
+        deleteBattery_ (state, batteryId) {
+            Vue.delete(state.baterioj, batteryId)
+        },
     },
     actions: {
+        /**
+         * Delete a battery from the vuex store
+         * @param commit
+         * @param batteryId
+         */
+        deleteBattery ({ commit }, batteryId) {
+            commit('deleteBattery_', batteryId)
+            skribuVuexStateAlLokaStokado()
+        },
+        /**
+         * Sets the preferred langauge string for i18n
+         * @param commit
+         * @param {string} lingvo
+         */
         agordiLingvon ({ commit }, lingvo) {
             commit('agordiLingvon', lingvo)
             skribuVuexStateAlLokaStokado()
         },
+        /**
+         * Locally nullifies the session info
+         * @param commit
+         */
         klaraKunsido ({ commit }) {
             commit('starigisNovanKunsidon', {
                 kunsidonId: null,
                 validaGxis: null,
             })
         },
+        /**
+         * Fetches and commits batteries from server
+         * @param commit
+         * @param state
+         */
         akiriBaterioj ({ commit, state }) {
             client.query({
                 query: gql`
@@ -103,6 +129,12 @@ export const store = new Vuex.Store({
                 skribuVuexStateAlLokaStokado()
             })
         },
+        /**
+         * Add a battery to vuex
+         * @param commit
+         * @param state
+         * @param {object} payload the battery object to add
+         */
         aldoniBaterio ({ commit, state }, payload) {
             /*
             client.mutate({
@@ -138,12 +170,22 @@ export const store = new Vuex.Store({
             })
             skribuVuexStateAlLokaStokado()
         },
+        /**
+         * Adds battery event to vuex state
+         * @param commit
+         * @param payload
+         */
         aldoniBaterioOkazajxo ({ commit }, payload) {
             commit('aldoniBaterioOkazajxo', Object.assign({}, payload, {
                 baterioOkazajxoId: uuid4Gen(),
             }))
             skribuVuexStateAlLokaStokado()
         },
+        /**
+         * Overwrites battery in vuex state. Used for making changes to battery name & model.
+         * @param commit
+         * @param payload
+         */
         redaktiBaterio ({ commit }, payload) {
             commit('redaktiBaterio', payload)
             skribuVuexStateAlLokaStokado()
