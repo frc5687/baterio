@@ -65,7 +65,7 @@ export const store = new Vuex.Store({
             Vue.set(state.baterioj, payload.baterioId, payload)
         },
         aldoniBaterioOkazajxo (state, payload) {
-            Vue.set(state.baterioOkazajxo, payload.baterioOkazajxoId, payload)
+            Vue.set(state.baterioOkazajxoj, payload.baterioOkazajxoId, payload)
         },
         redaktiBaterio (state, payload) {
             Vue.set(state.baterioj, payload.baterioId, payload)
@@ -173,12 +173,13 @@ export const store = new Vuex.Store({
         /**
          * Adds battery event to vuex state
          * @param commit
-         * @param payload
+         * @param {object} payload
          */
-        aldoniBaterioOkazajxo ({ commit }, payload) {
-            commit('aldoniBaterioOkazajxo', Object.assign({}, payload, {
-                baterioOkazajxoId: uuid4Gen(),
-            }))
+        aldoniBaterioOkazajxo_ ({ commit }, payload) {
+            console.log(payload)
+            let newPayload = { ...payload, baterioOkazajxoId: uuid4Gen() }
+            console.log(newPayload)
+            commit('aldoniBaterioOkazajxo', newPayload)
             skribuVuexStateAlLokaStokado()
         },
         /**

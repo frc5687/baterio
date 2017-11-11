@@ -186,6 +186,17 @@
         },
         methods: {
             submit () {
+                this.$store.dispatch('aldoniBaterioOkazajxo_', {
+                    loko: this.loko,
+                    tempo: this.tempo,
+                    baterioId: this.baterioId,
+                    ellasilon: this.ellasilon,
+                    zorge: this.zorge.val,
+                    tensioCxe0: this.tensioCxe0,
+                    tensioCxe18: this.tensioCxe18,
+                    rezisto: this.rezisto,
+                    notoj: this.notoj,
+                })
                 Toast.create.positive(this.$t('Sukcese Aldonis Nova Baterio Okazajxo'))
                 this.$router.go(-1)
             },
