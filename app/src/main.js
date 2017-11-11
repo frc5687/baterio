@@ -59,6 +59,7 @@ Quasar.start(() => {
     new Vue({
         el: '#q-app',
         i18n,
+        store,
         router,
         render: h => h(require('./App')),
     })
