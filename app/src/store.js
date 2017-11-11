@@ -31,7 +31,7 @@ let blankState = {
     defauxltaLoko: '2017nhbb'
 }
 
-let vuexState = Object.assign(blankState, (LocalStorage.get.item('vuexState') || {}))
+let vuexState = Object.assign(blankState, (LocalStorage.get.item('baterioVuexState') || {}))
 
 export const store = new Vuex.Store({
     state: vuexState,
@@ -163,7 +163,7 @@ export const store = new Vuex.Store({
 export function skribuVuexStateAlLokaStokado () {
     console.info('%cstore.js: %cskribante vuex state al loka stokado', 'color: blue', 'color: green')
     let stateToWrite = JSON.parse(JSON.stringify(store.state))
-    LocalStorage.set('vuexState', stateToWrite)
+    LocalStorage.set('baterioVuexState', stateToWrite)
 }
 
 export function uuid4Gen () {
