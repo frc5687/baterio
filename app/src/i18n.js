@@ -58,6 +58,8 @@ export const messages = {
         'Baterio forigita': 'Baterio forigita',
         'Konfirmi': 'Konfirmi',
         'Skani QR Kodo': 'Skani QR Kodo',
+        'Vidi': 'Vidi',
+        'Baterio Okazaĵoj': 'Baterio Okazaĵoj',
     },
 }
 
@@ -113,6 +115,8 @@ messages.en = Object.assign({}, messages.eo, {
     'Baterio forigita': 'Battery deleted',
     'Konfirmi': 'Confirm',
     'Skani QR Kodo': 'Scan QR Code',
+    'Vidi': 'View',
+    'Baterio Okazajxoj': 'Battery Events',
 })
 
 messages.es = Object.assign({}, messages.eo, {
