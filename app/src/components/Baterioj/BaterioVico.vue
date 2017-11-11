@@ -8,15 +8,19 @@
             <q-popover ref="popover">
                 <q-list item-separator link>
                     <q-item link>
+                        <q-item-side icon="open_in_new"/>
                         <q-item-main :label="$t('Vidi')" @click="$router.push('/baterioj/baterio/' + baterioId)"/>
                     </q-item>
                     <q-item @click="$refs.popover.close()">
+                        <q-item-side icon="edit"/>
                         <q-item-main :label="$t('Redakti Nomon')" @click="redaktiNomon()"/>
                     </q-item>
                     <q-item @click="$refs.popover.close()">
+                        <q-item-side icon="edit"/>
                         <q-item-main :label="$t('Redakti Modelo')" @click="redaktiModelo()"/>
                     </q-item>
                     <q-item @click="$refs.popover.close()">
+                        <q-item-side icon="delete"/>
                         <q-item-main :label="$t('Forigi Baterio')" @click="deleteBattery()"/>
                     </q-item>
                 </q-list>
