@@ -52,11 +52,30 @@
                 <q-item>
                     <q-item-main>
                         <q-field
+                            :error="zorge.modifita && !validaZorge"
+                            :error-label="$t('Bonvolu Enmeti Valoron') + ' 0-100'"
+                        >
+                            <q-input
+                                type="number"
+                                suffix="%"
+                                :min="0"
+                                :max="100"
+                                v-model="zorge.val"
+                                :float-label="$t('Zorge')"
+                                @change="zorge.modifita = true"
+                            />
+                        </q-field>
+                    </q-item-main>
+                </q-item>
+                <q-item>
+                    <q-item-main>
+                        <q-field
                             :error="tensioCxe0Modifita && !validaTensioCxe0"
                             :error-label="$t('Bonvolu Enmeti Valoron')"
                         >
                             <q-input
                                 type="number"
+                                suffix="V"
                                 v-model="tensioCxe0"
                                 :float-label="$t('Tensio Cxe 0 Amps')"
                                 @change="tensioCxe0Modifita = true"
@@ -72,6 +91,7 @@
                         >
                             <q-input
                                 type="number"
+                                suffix="V"
                                 v-model="tensioCxe18"
                                 :float-label="$t('Tensio Cxe 18 Amps')"
                                 @change="tensioCxe18Modifita = true"
@@ -87,6 +107,7 @@
                         >
                             <q-input
                                 type="number"
+                                suffix="Ω"
                                 v-model="rezisto"
                                 :float-label="$t('Rezisto (Ohms)')"
                                 @change="rezistoModifita = true"
@@ -109,7 +130,7 @@
                     <q-item-main>
                         <q-field>
                             <q-btn
-                                :disabled="!validaTensioCxe0 || !validaTensioCxe18 || !validaBaterioId || !validaRezisto"
+                                :disabled="!validaEllasilon || !validaZorge || !validaTensioCxe0 || !validaTensioCxe18 || !validaBaterioId || !validaRezisto"
                                 color="primary"
                                 @click="submit()"
                             >
@@ -187,6 +208,12 @@
             validaBaterioId () {
                 return this.baterioId !== ''
             },
+            validaZorge () {
+                return typeof this.zorge.val === typeof 1 && this.zorge.val >= 0 && this.zorge.val <= 100
+            },
+            validaEllasilon () {
+                return this.ellasilon !== null
+            },
         },
         data () {
             return {
@@ -202,7 +229,7 @@
                 rezistoModifita: false,
                 rezisto: null,
                 notoj: '',
-                ellasilon: '',
+                ellasilon: null,
                 ellasilonEbloj: [
                     {
                         label: this.$t('Submetita al Matcxo'),
@@ -221,6 +248,10 @@
                         value: 'Malkonektita de Cxarmo',
                     },
                 ],
+                zorge: {
+                    val: null,
+                    modifita: false,
+                },
             }
         },
     }
