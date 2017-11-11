@@ -77,6 +77,9 @@
             QPopover,
             BaterioVico,
         },
+        mounted () {
+            this.$store.dispatch('akiriBaterioj')
+        },
         data () {
             return {
                 query: '',

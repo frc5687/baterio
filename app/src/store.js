@@ -88,13 +88,30 @@ export const store = new Vuex.Store({
             skribuVuexStateAlLokaStokado()
         },
         /**
-         * Delete a battery from the vuex store
+         * Delete a battery (remote & local)
+         * @param state
          * @param commit
          * @param batteryId
          */
-        deleteBattery ({ commit }, batteryId) {
-            commit('deleteBattery_', batteryId)
-            skribuVuexStateAlLokaStokado()
+        deleteBattery ({ state, commit }, batteryId) {
+            client.mutate({
+                mutation: gql`
+                    mutation ($kunsidonId: ID!, $baterioId: String!) {
+                        baterio(kunsidonId: $kunsidonId) {
+                            forigiBaterio(baterioId: $baterioId) {
+                                estisSukcesa
+                            }
+                        }
+                    }
+                `,
+                variables: {
+                    kunsidonId: state.kunsido.kunsidonId,
+                    baterioId: batteryId,
+                },
+            }).then(respondo => {
+                commit('deleteBattery_', batteryId)
+                skribuVuexStateAlLokaStokado()
+            })
         },
         /**
          * Sets the preferred langauge string for i18n
@@ -142,13 +159,12 @@ export const store = new Vuex.Store({
             })
         },
         /**
-         * Add a battery to vuex
+         * Register a new battery (remote & local)
          * @param commit
          * @param state
          * @param {object} payload the battery object to add
          */
         aldoniBaterio ({ commit, state }, payload) {
-            /*
             client.mutate({
                 mutation: gql`
                     mutation ($kunsidonId: ID!, $baterioNomo: String!, $modelo: String!) {
@@ -166,21 +182,16 @@ export const store = new Vuex.Store({
                 variables: {
                     kunsidonId: state.kunsido.kunsidonId,
                     baterioNomo: payload.baterioNomo,
-                    modelo: payload.modelo
-                }
+                    modelo: payload.modelo,
+                },
             }).then(respondo => {
                 commit('aldoniBaterio', {
                     baterioId: respondo.data.baterio.registriBaterio.baterio.baterioId,
-                    baterioNomo: respondo.data.baterio.registriBaterio.baterio.baterioNomo
+                    baterioNomo: respondo.data.baterio.registriBaterio.baterio.baterioNomo,
+                    modelo: respondo.data.baterio.registriBaterio.baterio.modelo,
                 })
+                skribuVuexStateAlLokaStokado()
             })
-            */
-            commit('aldoniBaterio', {
-                baterioId: uuid4Gen(),
-                baterioNomo: payload.baterioNomo,
-                modelo: payload.modelo,
-            })
-            skribuVuexStateAlLokaStokado()
         },
         /**
          * Adds battery event to vuex state
