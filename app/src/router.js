@@ -2,12 +2,25 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { store } from './store.js'
 
+import Servilo from '@/Servilo/Servilo.vue'
+import Error404 from '@/Error404.vue'
+import Agordojn from '@/Agordojn.vue'
+import Hello from '@/Hello.vue'
+import Ensaluti from '@/Ensaluti.vue'
+import Baterioj from '@/Baterioj/Baterioj.vue'
+import Battery from '@/Baterioj/Battery/Battery.vue'
+import NovaOkazajxo from '@/NovaOkazajxo.vue'
+
 Vue.use(VueRouter)
 
+/*
+ * Uncomment this section and use "load()" if you want
+ * to lazy load routes.
 function load (component) {
-    // '@' is aliased to src/components
-    return () => import(`@/${component}.vue`)
+  // '@' is aliased to src/components
+  return () => import(`@/${component}.vue`)
 }
+*/
 
 const router = new VueRouter({
     /*
@@ -24,14 +37,14 @@ const router = new VueRouter({
 
     routes: [
         { path: '/', redirect: '/hejmo' },
-        { path: '/agordojn', component: load('Agordojn') },
-        { path: '/hejmo', component: load('Hello') },
-        { path: '/ensaluti', component: load('Ensaluti') },
-        { path: '/baterioj', component: load('Baterioj/Baterioj') },
-        { path: '/baterioj/baterio/:baterioId', component: load('Baterioj/Battery/Battery') },
-        { path: '/novaOkazajxo', component: load('NovaOkazajxo') },
-        { path: '/servilo', component: load('Servilo/Servilo') },
-        { path: '*', component: load('Error404') },
+        { path: '/agordojn', component: Agordojn },
+        { path: '/hejmo', component: Hello },
+        { path: '/ensaluti', component: Ensaluti },
+        { path: '/baterioj', component: Baterioj },
+        { path: '/baterioj/baterio/:baterioId', component: Battery },
+        { path: '/novaOkazajxo', component: NovaOkazajxo },
+        { path: '/servilo', component: Servilo },
+        { path: '*', component: Error404 },
     ],
 })
 

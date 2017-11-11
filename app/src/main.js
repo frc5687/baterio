@@ -58,13 +58,11 @@ export const client = new ApolloClient({
     networkInterface: createNetworkInterface({ uri }),
 })
 
-Quasar.start(() => {
-    /* eslint-disable no-new */
-    new Vue({
-        el: '#q-app',
-        i18n,
-        store,
-        router,
-        render: h => h(require('./App')),
-    })
+/* eslint-disable no-new */
+new Vue({
+    el: '#q-app',
+    i18n,
+    store,
+    router,
+    render: h => h(require('./App').default),
 })
